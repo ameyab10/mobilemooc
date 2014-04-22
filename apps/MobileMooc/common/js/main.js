@@ -25,7 +25,7 @@ function wlCommonInit(){
 }
 
 function dojoInit() {
-	require([ "dojo/ready", "dojo/parser", "dojox/mobile", "dojo/dom", "dijit/registry", "dojox/mobile/ScrollableView", "dojox/mobile/Rating", "dojox/mobile/ProgressBar", "dojox/mobile/TabBar", "dojox/mobile/TabBarButton" ], function(ready) {
+	require([ "dojo/ready", "dojo/parser", "dojox/mobile", "dojo/dom", "dijit/registry", "dojox/mobile/ScrollableView", "dojox/mobile/Rating", "dojox/mobile/ProgressBar", "dojox/mobile/TabBar", "dojox/mobile/TabBarButton", "dojox/mobile/View", "dojox/mobile/Button", "dojox/mobile/Heading", "dojox/mobile/ListItem" ], function(ready) {
 		ready(function() {
 		});
 	});

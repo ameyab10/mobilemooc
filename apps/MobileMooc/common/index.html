@@ -3,23 +3,53 @@
     	<head>
     		<meta charset="UTF-8">
     		<title>index</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="shortcut icon" href="images/favicon.png">
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    		<link rel="shortcut icon" href="images/favicon.png">
     		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     		<link rel="stylesheet" href="css/main.css">
-    		<script>window.$ = window.jQuery = WLJQ;</script>
-    		<script type="text/javascript" src="dojox/mobile/deviceTheme.js"></script>
-    		<script type="text/javascript" data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false" src="dojo/dojo.js"></script>
+    		  <script>window.$ = window.jQuery = WLJQ;</script>
+    		    		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
+    		 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    		
     	</head>
-    	<body style="display:">
-    		<div data-dojo-type="dojox.mobile.ScrollableView" id="view0" data-dojo-props="selected:true">
-		<!--application UI goes here-->
-    			Hello Worklight
-    		</div>
-    		<script src="js/initOptions.js"></script>
-    		<script src="js/main.js"></script>
-    		<script src="js/messages.js"></script>
+    	<body>
+ 
+<div data-role="page" id="home" data-theme="c">
+ 
+<div data-role="content">
+ 
+<div id="branding">
+ 
+<h1>Restaurant Picker </h1>
+ 
+</div>
+ 
+<div class="choice_list">
+ 
+<h1> Courses </h1>
+ 
+<ul data-role="listview" data-inset="true" >
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="images/icon.png"/> <h3> Some Sushis</h3></a></li>
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="pizza.jpg"/> <h3> A Pizza </h3></a></li>
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="kebap.jpg"/> <h3> A Kebap</h3></a></li>
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="burger.jpg"/> <h3> A Burger</h3></a></li>
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="nems.jpg"/> <h3> Some Nems </h3></a></li>
+ 
+<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="tradi.jpg"/> <h3> Something more traditional</h3></a></li>
+ 
+</ul>
+ 
+</div>
+ 
+</div>
+ 
+</div><!-- /page -->
+ 
     	</body>
 </html>

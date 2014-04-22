@@ -3,12 +3,13 @@
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <title>index</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
         <link href="worklight/worklight.css" rel="stylesheet">
         <link href="images/favicon.png" rel="shortcut icon">
         <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="css/main.css" rel="stylesheet">
+    		<!--  <script>window.$ = window.jQuery = WLJQ;</script>-->
+        <link href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet">
         <script>
 		// Define WL namespace.
 		var WL = WL ? WL : {};
@@ -31,21 +32,64 @@
 		<script src="worklight/wljq.js"></script>
 		<script src="worklight/worklight.js"></script>
 		<script src="worklight/checksum.js"></script>
-		<script>window.$ = window.jQuery = WLJQ;</script>
-    		<script src="dojox/mobile/deviceTheme.js" type="text/javascript"></script>
-    		<script data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false" src="http://10.0.0.16:9988/dojoLib/MobileMooc/MobileMooc/android/dojo/dojo.js" type="text/javascript"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     </head>
-    <body style="display:">
-        <div data-dojo-props="selected:true" data-dojo-type="dojox.mobile.ScrollableView" id="view0">
-            <div data-dojo-type="dojox.mobile.ProgressBar"></div>
-            <ul data-dojo-type="dojox.mobile.TabBar" fixed="bottom">
-                <li data-dojo-type="dojox.mobile.TabBarButton">Label</li>
-            </ul>
-		<!--application UI goes here-->
-    			Hello Worklight
-    		</div>
-        <script src="js/initOptions.js"></script>
+    <body style="display: none;">
+    		<!--application UI goes here-->
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <h2>Courses</h2>
+            </div>
+            <div class="ui-content" role="main">
+                <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
+                </ul>
+            </div>
+            <script src="js/initOptions.js"></script>
     		<script src="js/main.js"></script>
     		<script src="js/messages.js"></script>
+    		<script>
+    			function getCourseListHTML()
+    			{
+    			var courseList = [
+    					{
+							"courseId" : 5816,
+							"courseTitle": "Raising Money for Startups"
+						},
+						{
+							"courseId" : 5825,
+							"courseTitle": "Global Logistics"
+						},
+						{
+							"courseId" : 5831,
+							"courseTitle": "ESP World"
+						},
+						{
+							"courseId" : 5840,
+							"courseTitle": "World Literature - English I"
+						},
+						{
+							"courseId" : 5865,
+							"courseTitle": "An Introduction to PLO8"
+						},
+						{
+							"courseId" : 5894,
+							"courseTitle": "Physics GRE"
+						}];
+						var listItemHTML = [];
+    			$.each(courseList, function(index, value){
+						listItemHTML[index] = "<a href='' data-id='"+value["courseId"]+"'><img src='images/icon.png' width='80px' height='80px'></img>"+ value["courseTitle"] +"</a>"
+					});
+    				return listItemHTML;
+    			}
+    			$(document).ready(function(){
+    			var courseList = getCourseListHTML();
+    					for(var i=0;i<courseList.length;i++){
+    						$("<li/>").appendTo("#coursesList").html(courseList[i]);
+    						$("#coursesList").listview('refresh');
+    						}
+    			});
+    		</script>
+        </div>
     </body>
 </html>

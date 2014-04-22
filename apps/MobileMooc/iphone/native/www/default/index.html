@@ -3,8 +3,7 @@
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <title>index</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" name="viewport">
         <link href="worklight/worklight.css" rel="stylesheet">
         <link href="images/favicon.png" rel="shortcut icon">
         <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,20 +31,47 @@
 		<script src="worklight/worklight.js"></script>
 		<script src="worklight/checksum.js"></script>
 		<script>window.$ = window.jQuery = WLJQ;</script>
-    		<script src="dojox/mobile/deviceTheme.js" type="text/javascript"></script>
-    		<script data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false" src="http://10.0.0.16:9988/dojoLib/MobileMooc/MobileMooc/iphone/dojo/dojo.js" type="text/javascript"></script>
+        <link href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     </head>
-    <body style="display:">
-        <div data-dojo-props="selected:true" data-dojo-type="dojox.mobile.ScrollableView" id="view0">
-            <div data-dojo-type="dojox.mobile.ProgressBar"></div>
-            <ul data-dojo-type="dojox.mobile.TabBar" fixed="bottom">
-                <li data-dojo-type="dojox.mobile.TabBarButton">Label</li>
-            </ul>
-		<!--application UI goes here-->
-    			Hello Worklight
-    		</div>
-        <script src="js/initOptions.js"></script>
-    		<script src="js/main.js"></script>
-    		<script src="js/messages.js"></script>
+    <body>
+        <div data-role="page" data-theme="c" id="home">
+            <div data-role="content">
+                <div id="branding">
+                    <h1>Restaurant Picker </h1>
+                </div>
+                <div class="choice_list">
+                    <h1> Courses </h1>
+                    <ul data-inset="true" data-role="listview">
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="images/icon.png"> <h3> Some Sushis</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="pizza.jpg"> <h3> A Pizza </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="kebap.jpg"> <h3> A Kebap</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="burger.jpg"> <h3> A Burger</h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="nems.jpg"> <h3> Some Nems </h3>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="tradi.jpg"> <h3> Something more traditional</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /page -->
     </body>
 </html>
