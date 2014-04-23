@@ -38,38 +38,54 @@
         <div data-role="page" id="home">
 		<!-- id="home" data-theme="c" -->
             <div data-role="header">
-                <h1>My Title</h1>
+                <h1>Course List</h1>
             </div>
             <div data-role="content">
-                <div id="branding">
-                    <ul data-filter="true" data-inset="true" data-role="listview">
-                        <li>
-                            <a data-transition="slidedown" href="#page2">
-							<img src="images/icon.png">
-							<h3>Some Sushis</h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-transition="slidedown" href="choose_town.HTML">
-							<img src="images/icon.png">
-							<h3>A Pizza</h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-transition="slidedown" href="choose_town.HTML">
-							<img src="images/icon.png">
-							<h3>A Kebap</h3>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
+                </ul>
             </div>
+            <div data-role="footer"></div>
+            <script>
+			$(document).ready(function() {
+				$.ajax({
+					type : "POST",
+					url : "http://mobile-mooc.herokuapp.com/api/courses",
+					dataType : "jsonp",
+					// work with the response
+					success : function(response) {
+						console.log(response);
+						alert('success');
+						onRetrieve(response);
+					},
+					error : function(response) {
+						console.log(response);
+						alert('error');
+						onRetrieve(response);
+					}
+				});
+			});
+		</script>
+		<script>
+			function onRetrieve(coursePaylod) {
+			var courseLinks;
+			    			alert("On Retrieve caled "+coursePaylod);
+			    			$.each(coursePaylod, function(index, value){
+						courseLinks[index] = "<a href='' data-id='"+value["id"]+"'><img src='images/icon.png' width='40px' height='40px'></img>"+ value["title"] +"</a>"
+					});
+				var courseList = courseLinks;;
+				for (var i = 0; i < courseList.length; i++) {
+					$("<li/>").appendTo("#coursesList").html(courseList[i]);
+					$("#coursesList").listview('refresh');
+				}
+			}
+		</script>
         </div>
 	<!-- /page -->
         <div data-role="page" id="page2">
             <div data-role="header">
                 <h1>Page 2 Welcomes you</h1>
             </div>
-        </div> <!--End of page 2  -->
+        </div>
+	<!--End of page 2  -->
     </body>
 </html>

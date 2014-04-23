@@ -14,45 +14,63 @@
 
 </head>
 <body>
-
 	<div data-role="page" id="home">
 		<!-- id="home" data-theme="c" -->
 		<div data-role="header">
-			<h1>My Title</h1>
+			<h1>Course List</h1>
 		</div>
 		<div data-role="content">
-
-			<div id="branding">
-
-				<ul data-role="listview" data-inset="true" data-filter="true">
-
-					<li><a href="#page2" data-transition="slidedown">
-							<img src="images/icon.png" />
-							<h3>Some Sushis</h3>
-					</a></li>
-
-					<li><a href="choose_town.HTML" data-transition="slidedown">
-							<img src="images/icon.png" />
-							<h3>A Pizza</h3>
-					</a></li>
-
-					<li><a href="choose_town.HTML" data-transition="slidedown">
-							<img src="images/icon.png" />
-							<h3>A Kebap</h3>
-					</a></li>
-
+			<ul id="coursesList" data-role="listview" data-filter="true"
+				data-filter-placeholder="Search Courses..." data-inset="true">
 				</ul>
-
-			</div>
-
 		</div>
+		<div data-role="footer"></div>
+		<script>
+			$(document).ready(function() {
+				$.ajax({
+
+					type : "POST",
+					url : "http://mobile-mooc.herokuapp.com/api/courses",
+					dataType : "jsonp",
+					// work with the response
+					success : function(response) {
+						console.log(response);
+						alert('success');
+						onRetrieve(response);
+					},
+					error : function(response) {
+						console.log(response);
+						alert('error');
+						onRetrieve(response);
+					}
+				});
+			});
+		</script>
+		<script>
+			function onRetrieve(coursePaylod) {
+			
+			var courseLinks;
+			
+			    			alert("On Retrieve caled "+coursePaylod);
+			    			$.each(coursePaylod, function(index, value){
+						courseLinks[index] = "<a href='' data-id='"+value["id"]+"'><img src='images/icon.png' width='40px' height='40px'></img>"+ value["title"] +"</a>"
+					});
+			
+				var courseList = courseLinks;;
+				for (var i = 0; i < courseList.length; i++) {
+					$("<li/>").appendTo("#coursesList").html(courseList[i]);
+					$("#coursesList").listview('refresh');
+				}
+			}
+		</script>
 
 	</div>
 	<!-- /page -->
-<div data-role="page" id="page2">
+	<div data-role="page" id="page2">
 		<div data-role="header">
 			<h1>Page 2 Welcomes you</h1>
 		</div>
-</div> <!--End of page 2  -->
+	</div>
+	<!--End of page 2  -->
 </body>
 </html>
