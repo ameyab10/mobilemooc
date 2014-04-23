@@ -1,55 +1,58 @@
 <!DOCTYPE HTML>
 <html>
-    	<head>
-    		<meta charset="UTF-8">
-    		<title>index</title>
-    		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-    		<link rel="shortcut icon" href="images/favicon.png">
-    		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    		<link rel="stylesheet" href="css/main.css">
-    		  <script>window.$ = window.jQuery = WLJQ;</script>
-    		    		<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
-    		 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-    		
-    	</head>
-    	<body>
- 
-<div data-role="page" id="home" data-theme="c">
- 
-<div data-role="content">
- 
-<div id="branding">
- 
-<h1>Restaurant Picker </h1>
- 
-</div>
- 
-<div class="choice_list">
- 
-<h1> Courses </h1>
- 
-<ul data-role="listview" data-inset="true" >
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="images/icon.png"/> <h3> Some Sushis</h3></a></li>
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="pizza.jpg"/> <h3> A Pizza </h3></a></li>
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="kebap.jpg"/> <h3> A Kebap</h3></a></li>
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="burger.jpg"/> <h3> A Burger</h3></a></li>
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="nems.jpg"/> <h3> Some Nems </h3></a></li>
- 
-<li><a href="choose_town.HTML" data-transition="slidedown"> <img src="tradi.jpg"/> <h3> Something more traditional</h3></a></li>
- 
-</ul>
- 
-</div>
- 
-</div>
- 
-</div><!-- /page -->
- 
-    	</body>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/jquery.mobile-1.4.2.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="home">
+		<!-- id="home" data-theme="c" -->
+		<div data-role="header">
+			<h1>My Title</h1>
+		</div>
+		<div data-role="content">
+
+			<div id="branding">
+
+				<ul data-role="listview" data-inset="true" data-filter="true">
+
+					<li><a href="#page2" data-transition="slidedown">
+							<img src="images/icon.png" />
+							<h3>Some Sushis</h3>
+					</a></li>
+
+					<li><a href="choose_town.HTML" data-transition="slidedown">
+							<img src="images/icon.png" />
+							<h3>A Pizza</h3>
+					</a></li>
+
+					<li><a href="choose_town.HTML" data-transition="slidedown">
+							<img src="images/icon.png" />
+							<h3>A Kebap</h3>
+					</a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /page -->
+<div data-role="page" id="page2">
+		<div data-role="header">
+			<h1>Page 2 Welcomes you</h1>
+		</div>
+</div> <!--End of page 2  -->
+</body>
 </html>

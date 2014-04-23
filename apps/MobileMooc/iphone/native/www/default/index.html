@@ -8,6 +8,7 @@
         <link href="images/favicon.png" rel="shortcut icon">
         <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="css/main.css" rel="stylesheet">
+        <link href="css/jquery.mobile-1.4.2.css" rel="stylesheet">
         <script>
 		// Define WL namespace.
 		var WL = WL ? WL : {};
@@ -30,48 +31,45 @@
 		<script src="worklight/wljq.js"></script>
 		<script src="worklight/worklight.js"></script>
 		<script src="worklight/checksum.js"></script>
-		<script>window.$ = window.jQuery = WLJQ;</script>
-        <link href="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet">
-        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+		<script src="js/jquery-1.11.0.js"></script>
+<script src="js/jquery.mobile-1.4.2.js"></script>
     </head>
     <body>
-        <div data-role="page" data-theme="c" id="home">
+        <div data-role="page" id="home">
+		<!-- id="home" data-theme="c" -->
+            <div data-role="header">
+                <h1>My Title</h1>
+            </div>
             <div data-role="content">
                 <div id="branding">
-                    <h1>Restaurant Picker </h1>
-                </div>
-                <div class="choice_list">
-                    <h1> Courses </h1>
-                    <ul data-inset="true" data-role="listview">
+                    <ul data-filter="true" data-inset="true" data-role="listview">
                         <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="images/icon.png"> <h3> Some Sushis</h3>
+                            <a data-transition="slidedown" href="#page2">
+							<img src="images/icon.png">
+							<h3>Some Sushis</h3>
                             </a>
                         </li>
                         <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="pizza.jpg"> <h3> A Pizza </h3>
+                            <a data-transition="slidedown" href="choose_town.HTML">
+							<img src="images/icon.png">
+							<h3>A Pizza</h3>
                             </a>
                         </li>
                         <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="kebap.jpg"> <h3> A Kebap</h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="burger.jpg"> <h3> A Burger</h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="nems.jpg"> <h3> Some Nems </h3>
-                            </a>
-                        </li>
-                        <li>
-                            <a data-transition="slidedown" href="choose_town.HTML"> <img src="tradi.jpg"> <h3> Something more traditional</h3>
+                            <a data-transition="slidedown" href="choose_town.HTML">
+							<img src="images/icon.png">
+							<h3>A Kebap</h3>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- /page -->
+	<!-- /page -->
+        <div data-role="page" id="page2">
+            <div data-role="header">
+                <h1>Page 2 Welcomes you</h1>
+            </div>
+        </div> <!--End of page 2  -->
     </body>
 </html>
