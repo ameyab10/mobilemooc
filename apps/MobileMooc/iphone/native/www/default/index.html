@@ -42,33 +42,40 @@
             </div>
             <div data-role="content">
                 <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
+                    <li id="listitem">
+                        <a href="#courseDetails" id="item">Item</a>
+                    </li>
                 </ul>
             </div>
             <div data-role="footer"></div>
             <script>
 			$(document).ready(function() {
 				$.ajax({
-					type : "POST",
+					type : "GET",
 					url : "http://mobile-mooc.herokuapp.com/api/courses",
-					dataType : "jsonp",
+					dataType : "json",
 					// work with the response
 					success : function(response) {
 						console.log(response);
-						alert('success');
+					//	alert('success');
 						onRetrieve(response);
 					},
 					error : function(response) {
 						console.log(response);
 						alert('error');
-						onRetrieve(response);
+					//	onRetrieve(response);
 					}
 				});
 			});
 		</script>
 		<script>
 			function onRetrieve(coursePaylod) {
-			var courseLinks;
-			    			alert("On Retrieve caled "+coursePaylod);
+			coursePaylod[0].title;
+		//	$("#listitem").append("<li id=listitem2><a href="" >"+coursePaylod[0].title+"</a></li>");
+		//			$("#coursesList").listview('refresh');
+			$("#listitem").append("<li id=listitem3><a href="" id='item3'>Test</a></li>");
+			$("#coursesList").listview('refresh');
+	/* 					var courseLinks;
 			    			$.each(coursePaylod, function(index, value){
 						courseLinks[index] = "<a href='' data-id='"+value["id"]+"'><img src='images/icon.png' width='40px' height='40px'></img>"+ value["title"] +"</a>"
 					});
@@ -77,11 +84,11 @@
 					$("<li/>").appendTo("#coursesList").html(courseList[i]);
 					$("#coursesList").listview('refresh');
 				}
-			}
+			} */
 		</script>
         </div>
 	<!-- /page -->
-        <div data-role="page" id="page2">
+        <div data-role="page" id="courseDetails">
             <div data-role="header">
                 <h1>Page 2 Welcomes you</h1>
             </div>
