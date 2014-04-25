@@ -23,7 +23,7 @@
 			<ul id="coursesList" data-role="listview" data-filter="true"
 				data-filter-placeholder="Search Courses..." data-inset="true">
 				<li id="listitem"><a href="#courseDetails"
-					onclick="getCourseDetails()" id="item">Item</a></li>
+					onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li>
 			</ul>
 		</div>
 		<div data-role="footer"></div>
@@ -53,25 +53,30 @@
 		</script>
 
 		<script>
-			function onRetrieve(coursePaylod) {
+			function onRetrieve(courseList) {
 			
-			coursePaylod[0].title;
-		//	$("#listitem").append("<li id=listitem2><a href="" >"+coursePaylod[0].title+"</a></li>");
-		//			$("#coursesList").listview('refresh');
-			$("#listitem").append("<li id=listitem3><a href="" id='item3'>Test</a></li>");
-			$("#coursesList").listview('refresh');
-	/* 					var courseLinks;
-			    			$.each(coursePaylod, function(index, value){
-						courseLinks[index] = "<a href='' data-id='"+value["id"]+"'><img src='images/icon.png' width='40px' height='40px'></img>"+ value["title"] +"</a>"
+
+	//		$("#listitem").append("<li id=listitem3><a href="" id='item3'>Test</a></li>");
+	//		$("#coursesList").listview('refresh');
+				
+				var listItemHTML = [];
+    			$.each(courseList, function(index, value){
+    			listItemHTML[index] = "<a href='#courseDetails' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='images/5816.png' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+    			//listItemHTML[index] = "<a href='#courseDetails' onclick='getCourseDetails("+value["_id"]+")'  data-id='"+value["_id"]+"'><img src='images/5816.png' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+						// listItemHTML[index] = "<a href='#courseDetails' data-id='"+value["_id"]+"'><img src='"+value["_id"].images.img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+					//	 listItemHTML[index] = "<a href='#courseDetails' onClick='getCourseDetails('"+value["_id"]+"')' data-id='"+value["_id"]+"'><img src='"+value["_id"].images.img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>" 
 					});
-			
-				var courseList = courseLinks;;
-				for (var i = 0; i < courseList.length; i++) {
-					$("<li/>").appendTo("#coursesList").html(courseList[i]);
-					$("#coursesList").listview('refresh');
-				}
-			} */
-		</script>
+    				displayCourseList(listItemHTML);
+    			}
+    	
+    			function displayCourseList(courseList){
+
+    					for(var i=0;i<courseList.length;i++){
+    						$("<li/>").appendTo("#coursesList").html(courseList[i]);
+    						$("#coursesList").listview('refresh');
+    					}
+    					}	
+    					</script>
 
 	</div>
 	<!-- /page -->
@@ -131,7 +136,7 @@
 
 			<div data-role="navbar" id="navbar">
 				<ul>
-					<li><a href="#" id="home">Home</a></li>
+					<li><a href="#home" id="home">Home</a></li>
 					<li><a href="#" id="Drop">Drop</a></li>
 					<li><a href="#" id="Add" onclick="getCourseDetails()">Add
 					</a></li>
@@ -146,12 +151,13 @@
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
-		function getCourseDetails(){
+		function getCourseDetails(courseID){
 						$.ajax({
 
 					type : "GET",
 					//url : "http://mobile-mooc.herokuapp.com/api/courses/5358b72c75be840200ed5c77",
-					url : "http://mobile-mooc.herokuapp.com/api/courses/5358b52375be840200ed5c76",
+					//url : "http://mobile-mooc.herokuapp.com/api/courses/5358b52375be840200ed5c76",
+					url : "http://mobile-mooc.herokuapp.com/api/courses/"+courseID,
 					dataType : "json",
 					// work with the response
 					success : function(response) {
