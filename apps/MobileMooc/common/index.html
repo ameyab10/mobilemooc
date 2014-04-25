@@ -61,7 +61,7 @@
 				
 				var listItemHTML = [];
     			$.each(courseList, function(index, value){
-    			listItemHTML[index] = "<a href='#courseDetails' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='images/5816.png' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+    			listItemHTML[index] = "<a href='#courseDetails' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='"+value["images"].img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
     			//listItemHTML[index] = "<a href='#courseDetails' onclick='getCourseDetails("+value["_id"]+")'  data-id='"+value["_id"]+"'><img src='images/5816.png' width='80px' height='80px'></img>"+ value["title"] +"</a>"
 						// listItemHTML[index] = "<a href='#courseDetails' data-id='"+value["_id"]+"'><img src='"+value["_id"].images.img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
 					//	 listItemHTML[index] = "<a href='#courseDetails' onClick='getCourseDetails('"+value["_id"]+"')' data-id='"+value["_id"]+"'><img src='"+value["_id"].images.img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>" 
