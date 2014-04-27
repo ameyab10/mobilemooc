@@ -43,7 +43,7 @@
             <div data-role="content">
                 <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
                     <li id="listitem">
-                        <a href="#courseDetails" id="item" onclick="getCourseDetails(5358b52375be840200ed5c76)">Item</a>
+                        <a href="#courseDetails" id="item" onclick="getCourseDetails('5358b52375be840200ed5c76')">Item</a>
                     </li>
                 </ul>
             </div>
@@ -73,12 +73,10 @@
 		</script>
 		<script>
 			function onRetrieve(courseList) {
-	//		$("#listitem").append("<li id=listitem3><a href="" id='item3'>Test</a></li>");
-	//		$("#coursesList").listview('refresh');
 				var listItemHTML = [];
     			$.each(courseList, function(index, value){
-						listItemHTML[index] = "<a href='#courseDetails' data-id='"+value["_id"]+"'><img src='"+value["_id"].images.img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
-					});
+    			listItemHTML[index] = "<a href='#courseDetails' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='"+value["images"].img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+    				});
     				displayCourseList(listItemHTML);
     			}
     			function displayCourseList(courseList){
@@ -102,9 +100,10 @@
 				top founders and CEOs explain how to raise money for your startup!</label>
             </div>
             <div data-role="content" id="pageContent0">
-                <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
-			<div class="ui-grid-a">
-                    <div class="ui-block-a" style="test-align: top">Professor:</div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a" style="test-align: top">
+                        <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
+				</div>
                     <div class="ui-block-b" id="profName">Dave McClure</div>
                 </div>
                 <div class="ui-grid-a">
@@ -125,20 +124,34 @@
                         </li>
                     </ul>
                 </div>
-                <video controls="" height="200" style="padding-top:20px" width="auto">
-                    <source id="courseVideo" src="https://sknowbucket-a.akamaihd.net/2010-11-23_02-06-27-9e4db5fbf0f9bd8b915f1851bdafe4c2/WebHD.mp4?__gda__=1398338107_eba2fcbe275db7beb71677b9802bac20&amp;filedownload=attachment%3Bfilename%3Ddeveloper-dashboard.wmv" type="video/mp4">
+<!-- 	<!- - 		<video style="padding-top: 20px" width="auto" height="200" controls>
+				<source id="courseVideo"
+					src="https://sknowbucket-a.akamaihd.net/2010-11-23_02-06-27-9e4db5fbf0f9bd8b915f1851bdafe4c2/WebHD.mp4?__gda__=1398338107_eba2fcbe275db7beb71677b9802bac20&filedownload=attachment%3Bfilename%3Ddeveloper-dashboard.wmv"
+					>
  					 Your browser does not support the video tag.			</source>
-                </video>
+			</video> 
+			<video webkit-playsinline width="auto" height="200">
+				<source src="http://d396qusza40orc.cloudfront.net/android/recoded_videos%2FIntroduction%20to%20the%20Android%20Platform.7628141076f511e3a34459ea3c3b9e08.webm" type="video/mp4"
+				type='video/webm' ></source>
+			</video>
+			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
+				data-theme="d" data-tolerance="15,15" class="ui-content">
+				<iframe src="http://d396qusza40orc.cloudfront.net/android/recoded_videos%2FIntroduction%20to%20the%20Android%20Platform.7628141076f511e3a34459ea3c3b9e08.webm" width="497"
+					height="298" seamless></iframe>
+			</div>
+ -->
+                <iframe frameborder="0" height="200" id="player" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&amp;origin=http://example.com" type="text/html" width="300"></iframe>
+                <iframe frameborder="0" height="200" id="player" src="http://www.youtube.com/embed/KkMDCCdjyW8" type="text/html" width="300"></iframe>
                 <div data-role="navbar" id="navbar">
                     <ul>
                         <li>
-                            <a href="#" id="home">Home</a>
+                            <a href="#home" id="home">Home</a>
                         </li>
                         <li>
                             <a href="#" id="Drop">Drop</a>
                         </li>
                         <li>
-                            <a href="#" id="Add" onclick="getCourseDetails()">Add
+                            <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add
 					</a>
                         </li>
                     </ul>
@@ -179,7 +192,7 @@
 			$('#subscriberNo').text(courseData.numSubscribers);
 			$('#contentTitle').text(courseData.promoAsset.title);
 			$('#contentDescription').text(courseData.promoAsset.description);
-			$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);
+			//$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);
 		}
 		</script>
         </div>
