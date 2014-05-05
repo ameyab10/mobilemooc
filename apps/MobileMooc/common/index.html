@@ -16,7 +16,10 @@
 .wrap {
     white-space: normal !important;
 }
-/* .ui-page.ui-body-c {
+
+/*
+//Code to add background image to all the screens
+ .ui-page.ui-body-c {
     background: url(images/moocbg.png);
     background-repeat:no-repeat;
     background-position:center center;
@@ -31,24 +34,88 @@
 
 </head>
 <body>
+
+<!-- Login Page Start  -->
+<div data-role="page" id="loginPage">
+ <div data-role="header">
+  <h2>Login</h2>
+</div>
+	<div id="contentLogin">
+            <form>
+                <label style="font-weight:bold;">Username:</label>
+                <div class="formTexts" style="margin:10px"><input type="text" name="name" id="username" data-mini="true" placeholder="Username"/></div><br/>
+                <label style="font-weight:bold;">Password:&nbsp;</label>
+                <div class="formTexts" style="margin:10px"><input type="password" size="20" name="password" id="password" data-mini="true" placeholder="Password" /></div><br/>
+    <a href="#" class="buttons" id="loginButton" data-role="button" style="margin:10px">
+        Sign In
+    </a>
+    <br/>
+    <br/>
+    <br/>
+    <p>Not A User?
+    <a href="" id="registerLink"> Register</a></p>
+   </div>
+
+	</div>
+
+<!-- Login Page END  -->
+
+ <!-- Register Page Start -->        
+<div data-role="page" id="register">
+ <div data-role="header">
+                    <h2><span id="backbutton"><i class="fa fa-arrow-circle-left fa-lg"></i></span>Register</h2>
+</div>
+<div id="contentRegister">
+            <form>
+                <label>Username:</label>
+                <div class="formTexts"><input type="text" name="name" id="r_username" data-mini="true" placeholder="Username"/></div><br/>
+                <label>Password:</label>
+                <div class="formTexts"><input type="password" name="password" id="r_password" data-mini="true" placeholder="Password" /></div><br/>
+    <div class="buttons" id="registerButton" data-role="button">
+        Register
+    </div>
+   </div>
+</div> 
+<!-- Register Page End  -->
+
+<!-- Courses List Page Start -->
 	<div data-role="page" id="home">
-		<!-- id="home" data-theme="c" -->
+				
+				<!-- Sidebar Panel Code -->
+			<div data-role="panel" id="sidebarPanel" data-position="left" data-display="push">
+			<div data-role="header">
+			<h4>My Profile</h4>
+			<ul data-role="listview" data-inset="true" data-theme="c" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+			    <li data-icon="custom" id="skull" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Update Profile</a></div><span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="delete" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Un-Enroll Course</a></div><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="gear" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Settings</a></div><span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="info" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Logout</a></div><span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>
+			 </ul>
+			</div>
+			</div>
+		<!--  Sidebar Code end -->
+		
 		<div data-role="header">
-			<h1>Course List</h1>
+			<a href="#sidebarPanel" data-role="button" data-icon="grid"></a><h1>Course List</h1>
 		</div>
+		
 		<div data-role="content">
 			<ul id="coursesList" data-role="listview" data-filter="true"
 				data-filter-placeholder="Search Courses..." data-inset="true">
 			<!-- 	<li id="listitem"><a href="#courseDetails"
 			 		onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li> -->
-			</ul>
+			</ul>			
 		</div>
+		
+
 		<div data-role="footer"></div>
 		<script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
-			$(document).ready(function() {
+		//	$(document).ready(function() {
+		
+		function getCourses(){
 				$.ajax({
 
 					type : "GET",
@@ -66,7 +133,8 @@
 					//	onRetrieve(response);
 					}
 				});
-			});
+				}
+		//	});
 		</script>
 
 		<script>
@@ -204,9 +272,13 @@
 			$('#contentDescription').text(courseData.promoAsset.description);
 		//	$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);			
 				
-			var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
+			/* var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
 			$('#video1').text(courseData.coursevideos.title1);
-			$('#video1').attr("onclick",vid1);
+			$('#video1').attr("onclick",vid1); */
+			
+			 var vid1 = "openshareurl('"+courseData.coursevideos.video1+"')";
+			$('#video1').text(courseData.coursevideos.title1);
+			$('#video1').attr("onclick",vid1); 
 			
 			var vid2 = "loadVideo('"+courseData.coursevideos.video2+"')";
 			$('#video2').text(courseData.coursevideos.title2);
@@ -352,7 +424,6 @@
 		window.open(fileurl, '_blank','location=yes','closebuttoncaption=back');
 		
 		}
-		//openpdf('http://press.princeton.edu/chapters/s9687.pdf');
 		
 		</script>
 		
@@ -366,7 +437,9 @@
 		<style type="text/css">
 #share-buttons img {
 	width: 70px;
-	padding: 10px;
+	padding: 15px;
+	padding-right: 30px;
+		padding-left: 30px;
 	border: 0;
 	box-shadow: 0;
 	display: inline;
@@ -375,8 +448,6 @@
 		<div data-role="header" id="header" data-position="fixed">
 			<h3>Share Course</h3>
 		</div>
-
-
 
 	<div data-role="content" style="padding: 15px">
 		<div id="share-buttons">
@@ -482,5 +553,69 @@
 	<!--End of Page 5 Social features  -->
 	
 	
+	<!--  Common Scripts  -->
+	 <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+            
+            $("#registerLink").click(function(){
+                $.mobile.navigate("#register",{});
+            });
+            $("#registerButton").click(function(){
+            
+            var uname = $("#r_username").val();
+            var pwd = $("#r_password").val();
+            
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                }).done(function(data) {
+                  $.mobile.navigate("#login",{});
+                });
+            
+            
+            });
+            $("#loginButton").click(function(){
+            
+            var uname = $("#username").val();
+            var pwd = $("#password").val();
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users/login",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                })
+                .done(function(data) {
+                  console.log(data);
+                  $("#username").val('');
+                  $("#password").val('');
+                  if ($('#errorDiv').length){
+                        $('#errorDiv').remove();
+                    }
+                                                          getCourses();
+                  $.mobile.navigate("#home",{});
+
+                })
+                .fail(function(data) {
+                    var errorDivHtml = "<div id='errorDiv' style='text-align:center;color:red;width:180px;height:20px;border:1px solid red;border-radius:5px;margin-left:80px;margin-top:5px'>Sorry!Please Try Again!</div>"
+                    if ($('#errorDiv').length>0){
+                        $('#errorDiv').remove();
+                        $("#loginButton").after(errorDivHtml);    
+                    }
+                    else{
+                        $("#loginButton").after(errorDivHtml);
+                    }
+                    $("#username").val('');
+                  $("#password").val('');
+                });
+            
+            });
+	
+	
+	</script>
+		
 </body>
 </html>
