@@ -1,4 +1,4 @@
-#Sun May 04 20:59:50 PDT 2014
+#Mon May 05 01:09:38 PDT 2014
 base.iphone=3921556017
 base.android=2900737830
 common.android=1593731414
@@ -18,5 +18,5 @@ encoding//apps/MobileMooc/common/index.html=US-ASCII
 fipshttp.ipad=3532471817
 wl_compatible_version=6.1.0.0
 base.ipad=3921556017
-analytics.iphone=3619701133
 analytics.android=2408201680
+analytics.iphone=3619701133
