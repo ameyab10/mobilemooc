@@ -33,6 +33,11 @@
 		<script src="worklight/checksum.js"></script>
 		<script src="js/jquery-1.11.0.js"></script>
 <script src="js/jquery.mobile-1.4.2.js"></script>
+        <style>
+.wrap {
+    white-space: normal !important;
+}
+</style>
     </head>
     <body>
         <div data-role="page" id="home">
@@ -42,9 +47,8 @@
             </div>
             <div data-role="content">
                 <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
-                    <li id="listitem">
-                        <a href="#courseDetails" id="item" onclick="getCourseDetails('5358b52375be840200ed5c76')">Item</a>
-                    </li>
+			<!-- 	<li id="listitem"><a href="#courseDetails"
+			 		onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li> -->
                 </ul>
             </div>
             <div data-role="footer"></div>
@@ -75,7 +79,7 @@
 			function onRetrieve(courseList) {
 				var listItemHTML = [];
     			$.each(courseList, function(index, value){
-    			listItemHTML[index] = "<a href='#courseDetails' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='"+value["images"].img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+    			listItemHTML[index] = "<a href='#courseDetails' class='wrap' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='"+value["images"].img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
     				});
     				displayCourseList(listItemHTML);
     			}
@@ -92,56 +96,46 @@
             <div data-role="header">
                 <h1>Course Details</h1>
             </div>
-            <div data-role="content" id="pageContent">
-                <label id="courseTitle" style="text-align: center">Raising
+		<!-- <div data-role="content" id="pageContent"> -->
+            <h3>	
+                <label id="courseTitle" style="text-align: center; padding:10px; ">Raising
 				Money for Startups <a href="https://www.udemy.com/raising-capital-for-startups/" id="courseLink"></a>
-			</label> <img height="200" id="courseImage" src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" style="width: 100%">
-			<label id="courseDescription" style="font-family: Apple LiSung; background-color: silver;">7
+			</label> 
+            </h3>
+            <img height="200" id="courseImage" src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" style="width: 100%">
+			<label id="courseDescription" style="font-family: Apple LiSung; padding:10px">7
 				top founders and CEOs explain how to raise money for your startup!</label>
-            </div>
+		<!-- </div> -->
             <div data-role="content" id="pageContent0">
-                <div class="ui-grid-a">
-                    <div class="ui-block-a" style="test-align: top">
-                        <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
+                <div data-role="content" id="pageContent0">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a" style="text-align: top">
+                            <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
 				</div>
-                    <div class="ui-block-b" id="profName">Dave McClure</div>
+                        <div class="ui-block-b" style="text-align: center; padding-top:15px">
+                            <div>Professor. </div>
+                            <div id="profName"></div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a" style="padding-top:10px">
+                        <div class="ui-block-a">No of Lectures</div>
+                        <div class="ui-block-b" id="lectureNo" style="text-align: center">10</div>
+                    </div>
+                    <div class="ui-grid-a" style="padding-top:10px">
+                        <div class="ui-block-a">No of Subscribers</div>
+                        <div class="ui-block-b" id="subscriberNo" style="text-align: center">Dave McClure</div>
+                    </div>
                 </div>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">No of Lectures</div>
-                    <div class="ui-block-b" id="lectureNo">10</div>
-                </div>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">No of Subscribers</div>
-                    <div class="ui-block-b" id="subscriberNo">Dave McClure</div>
-                </div>
-                <div>
-                    <ul data-filter="true" data-filter-placeholder="Search Content" data-inset="true" data-role="listview" id="contentList">
-                        <li id="contentTitle">
-                            <a href="" id="item0">Item</a>
-                        </li>
-                        <li id="contentDescription">
-                            <a href="" id="item1">Item</a>
-                        </li>
-                    </ul>
-                </div>
-<!-- 	<!- - 		<video style="padding-top: 20px" width="auto" height="200" controls>
-				<source id="courseVideo"
-					src="https://sknowbucket-a.akamaihd.net/2010-11-23_02-06-27-9e4db5fbf0f9bd8b915f1851bdafe4c2/WebHD.mp4?__gda__=1398338107_eba2fcbe275db7beb71677b9802bac20&filedownload=attachment%3Bfilename%3Ddeveloper-dashboard.wmv"
-					>
- 					 Your browser does not support the video tag.			</source>
-			</video> 
-			<video webkit-playsinline width="auto" height="200">
-				<source src="http://d396qusza40orc.cloudfront.net/android/recoded_videos%2FIntroduction%20to%20the%20Android%20Platform.7628141076f511e3a34459ea3c3b9e08.webm" type="video/mp4"
-				type='video/webm' ></source>
-			</video>
-			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
-				data-theme="d" data-tolerance="15,15" class="ui-content">
-				<iframe src="http://d396qusza40orc.cloudfront.net/android/recoded_videos%2FIntroduction%20to%20the%20Android%20Platform.7628141076f511e3a34459ea3c3b9e08.webm" width="497"
-					height="298" seamless></iframe>
-			</div>
- -->
-                <iframe frameborder="0" height="200" id="player" src="http://www.youtube.com/embed/u1zgFlCw8Aw?enablejsapi=1&amp;origin=http://example.com" type="text/html" width="300"></iframe>
-                <iframe frameborder="0" height="200" id="player" src="http://www.youtube.com/embed/KkMDCCdjyW8" type="text/html" width="300"></iframe>
+                <ul data-inset="true" data-role="listview" id="contentList" style="padding:20px">
+				<!-- 	<li id="contentTitle"><a href="" id="item0">Item</a></li> -->
+					<!-- <li id="contentDescription"><a href="" id="item1">Item</a></li> -->
+                    <li id="videoPage">
+                        <a href="#coursevideos" id="viewlectures">View Lectures</a>
+                    </li>
+                    <li id="notespage">
+                        <a href="#lecturenotes" id="viewlectures">Read Lecture Notes</a>
+                    </li>
+                </ul>
                 <div data-role="navbar" id="navbar">
                     <ul>
                         <li>
@@ -151,8 +145,7 @@
                             <a href="#" id="Drop">Drop</a>
                         </li>
                         <li>
-                            <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add
-					</a>
+                            <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a>
                         </li>
                     </ul>
                 </div>
@@ -164,20 +157,16 @@
 		function getCourseDetails(courseID){
 						$.ajax({
 					type : "GET",
-					//url : "http://mobile-mooc.herokuapp.com/api/courses/5358b72c75be840200ed5c77",
-					//url : "http://mobile-mooc.herokuapp.com/api/courses/5358b52375be840200ed5c76",
 					url : "http://mobile-mooc.herokuapp.com/api/courses/"+courseID,
 					dataType : "json",
 					// work with the response
 					success : function(response) {
 						console.log(response);
-					//	alert('success');
 						populateCourseData(response);
 					},
 					error : function(response) {
 						console.log(response);
 						alert('error');
-					//	onRetrieve(response);
 					}
 				});
 		}
@@ -192,10 +181,146 @@
 			$('#subscriberNo').text(courseData.numSubscribers);
 			$('#contentTitle').text(courseData.promoAsset.title);
 			$('#contentDescription').text(courseData.promoAsset.description);
-			//$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);
+		//	$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);			
+			var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
+			$('#video1').text(courseData.coursevideos.title1);
+			$('#video1').attr("onclick",vid1);
+			var vid2 = "loadVideo('"+courseData.coursevideos.video2+"')";
+			$('#video2').text(courseData.coursevideos.title2);
+			$('#video2').attr("onclick",vid2);
+			var vid3 = "loadVideo('"+courseData.coursevideos.video3+"')";
+			$('#video3').text(courseData.coursevideos.title3);
+			$('#video3').attr("onclick",vid3);
+			var vid4 = "loadVideo('"+courseData.coursevideos.video4+"')";
+			$('#video4').text(courseData.coursevideos.title4);
+			$('#video4').attr("onclick",vid4);
+			var vid5 = "loadVideo('"+courseData.coursevideos.video5+"')";
+			$('#video5').text(courseData.coursevideos.title5);
+			$('#video5').attr("onclick",vid5);
+			populateCourseNotes(courseData);
+		}
+		function populateCourseNotes(courseData){
+			var file1 = "openpdf('"+courseData.coursepdf.file1+"')";
+			$('#pdf1').text(courseData.coursevideos.title1);
+			$('#pdf1').attr("onclick",file1);
+			var file2 = "openpdf('"+courseData.coursepdf.file2+"')";
+			$('#pdf2').text(courseData.coursevideos.title2);
+			$('#pdf2').attr("onclick",file2);
+			var file3 = "openpdf('"+courseData.coursepdf.file3+"')";
+			$('#pdf3').text(courseData.coursevideos.title3);
+			$('#pdf3').attr("onclick",file3);
+			var file4 = "openpdf('"+courseData.coursepdf.file4+"')";
+			$('#pdf4').text(courseData.coursevideos.title4);
+			$('#pdf4').attr("onclick",file4);
+			var file4 = "openpdf('"+courseData.coursepdf.file5+"')";
+			$('#pdf5').text(courseData.coursevideos.title5);
+			$('#pdf5').attr("onclick",file5);
 		}
 		</script>
         </div>
 	<!--End of page 2  -->
+        <div data-role="page" id="coursevideos">
+            <div data-position="fixed" data-role="header" id="header">
+                <h3>Course Lectures</h3>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-inset="true" data-role="listview" id="listview">
+                    <li data-role="list-divider" id="divider">Lectures</li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video1">Lecture 1</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video2">Lecture 2</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video3">Lecture 3</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video4">Lecture 4</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video5">Lecture 5</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="video5" onclick="window.open('http://press.princeton.edu/chapters/s9687.pdf', '_blank', 'location=no');">Lecture 5</a>
+                    </li>
+                </ul>
+                <div class="ui-content" data-overlay-theme="a" data-role="popup" data-theme="d" data-tolerance="15,15" id="popupVideo">
+                    <iframe height="300" id="videoFrame" seamless="" src="" width="280"></iframe> 
+                </div>
+			<!-- http://player.vimeo.com/video/41135183 -->
+            </div>
+            <div data-role="navbar" id="navbar">
+                <ul>
+                    <li>
+                        <a href="#home" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Drop">Drop</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a>
+                    </li>
+                </ul>
+            </div>
+            <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		function loadVideo(videoUrl){
+		$('#videoFrame').attr("src", videoUrl);
+		}
+		</script>
+        </div>
+	<!--End of Page 3 Video Lectures  -->
+	<!-- Page 4 Lecture Notes -->
+        <div data-role="page" id="lecturenotes">
+            <div data-position="fixed" data-role="header" id="header">
+                <h3>Course notes</h3>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-inset="true" data-role="listview" id="pdflist">
+                    <li data-role="list-divider" id="divider">Lectures</li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="pdf1" onclick="">Lecture 1</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="pdf2" onclick="">Lecture 2</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="pdf3" onclick="">Lecture 3</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="pdf4" onclick="">Lecture 4</a>
+                    </li>
+                    <li id="saa">
+                        <a class="wrap" data-rel="popup" href="#" id="pdf5" onclick="">Lecture 5</a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="navbar" id="navbar">
+                <ul>
+                    <li>
+                        <a href="#home" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Drop">Drop</a>
+                    </li>
+                    <li>
+                        <a href="#" id="Add" onclick="">Add </a>
+                    </li>
+                </ul>
+            </div>
+            <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		function openpdf(fileurl){
+		window.open(fileurl, '_blank', 'location=no');
+		}
+		//openpdf('http://press.princeton.edu/chapters/s9687.pdf');
+		</script>
+        </div>
+	<!--End of Page 3 Video Lectures  -->
     </body>
 </html>

@@ -16,6 +16,17 @@
 .wrap {
     white-space: normal !important;
 }
+/* .ui-page.ui-body-c {
+    background: url(images/moocbg.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;  
+} */
+
+/* .ui-page
+{
+   background: transparent url(images/moocbg2.png) no-repeat center center; background-size:cover;
+} */
 </style>
 
 </head>
@@ -100,7 +111,7 @@
 				src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" />
 
 			<label id="courseDescription"
-				style="font-family: Apple LiSung; padding:10px">7
+				style="font-family: Apple LiSung; padding:10px;">7
 				top founders and CEOs explain how to raise money for your startup!</label>
 		<!-- </div> -->
 
@@ -138,6 +149,7 @@
 					<!-- <li id="contentDescription"><a href="" id="item1">Item</a></li> -->
 					<li id="videoPage"><a href="#coursevideos" id="viewlectures">View Lectures</a></li>
 					<li id="notespage"><a href="#lecturenotes" id="viewlectures">Read Lecture Notes</a></li>
+					<li id="notespage"><a href="#social" id="">Share this Course</a></li>
 				</ul>
 			
 
@@ -337,7 +349,7 @@
 		
 		function openpdf(fileurl){
 		
-		window.open(fileurl, '_blank', 'location=no');
+		window.open(fileurl, '_blank','location=yes','closebuttoncaption=back');
 		
 		}
 		//openpdf('http://press.princeton.edu/chapters/s9687.pdf');
@@ -346,7 +358,129 @@
 		
 		
 	</div>
-	<!--End of Page 3 Video Lectures  -->
+	<!--End of Page 4 Lecture Notes  -->
+	
+		<!-- Page 5 Social Features -->
+	<div data-role="page" id="social">
+
+		<style type="text/css">
+#share-buttons img {
+	width: 70px;
+	padding: 10px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
+}
+</style>
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Share Course</h3>
+		</div>
+
+
+
+	<div data-role="content" style="padding: 15px">
+		<div id="share-buttons">
+
+			<!-- Facebook -->
+			<a
+				href="#" data-rel="popup"  onclick='openshareurl("http://www.facebook.com/sharer.php?u=http://www.coursera.com")' target="_blank"
+				><img
+				src="images/facebook.png"
+				alt="Facebook" /></a>
+
+			<!-- Twitter -->
+			<a
+				href="#" onclick='openshareurl("http://twitter.com/share?url=http://www.coursera.com&text=Check out this Mobile Mooc App")'
+				target="_blank"><img
+				src="images/twitter.png"
+				alt="Twitter" /></a>
+
+
+			<!-- Google+ -->
+			<a
+				href="#"
+				onclick='openshareurl("https://plus.google.com/share?url=http://www.simplesharebuttons.com")'
+				target="_blank"><img
+				src="images/google.png"
+				alt="Google" /></a>
+
+			<!-- Digg -->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.digg.com/submit?url=http://www.simplesharebuttons.com")'
+				target="_blank"><img
+				src="images/diggit.png"
+				alt="Digg" /></a>
+
+			<!-- Reddit -->
+			<a
+				href="#"
+				onclick='openshareurl("http://reddit.com/submit?url=http://www.simplesharebuttons.com&title=Simple Share Buttons")'
+				target="_blank"><img
+				src="images/reddit.png"
+				alt="Reddit" /></a>
+
+			<!-- LinkedIn -->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.linkedin.com/shareArticle?mini=true&url=http://www.coursera.org")'
+				target="_blank"><img
+				src="images/linkedin.png"
+				alt="LinkedIn" /></a>
+
+			<!-- StumbleUpon-->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.stumbleupon.com/submit?url=http://www.coursera.org&title=Check Out this Mobile MOOC App")'
+				target="_blank"><img
+				src="images/stumbleupon.png"
+				alt="StumbleUpon" /></a>
+
+		</div>
+		
+		
+		<div data-role="popup" id="popupShare" data-overlay-theme="a"
+				data-theme="d" data-tolerance="15,15" class="ui-content">
+
+					 <iframe  id="shareFrame" src="" width="250"
+					height="300" seamless></iframe> 
+			 
+			</div>
+	</div>
+
+		<div data-role="navbar" id="navbar">
+			<ul>
+				<li><a href="#home" id="home">Home</a></li>
+				<li><a href="#" id="Drop">Drop</a></li>
+				<li><a href="#" id="Add"
+					onclick="">Add </a></li>
+			</ul>
+		</div>
+		
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		
+		var sharetext;
+		var sharetitle;
+		//var shareurl ="http://www.coursera.org";
+		//var fburl= "http://www.facebook.com/sharer.php?u="+shareurl;
+		
+		function openshareurl(shareurl){
+		
+		window.open(shareurl, '_blank','location=yes','closebuttoncaption=back');
+	//	$('#shareFrame').attr("src", shareurl);
+		
+		}
+		
+
+		</script>
+		
+		
+	</div>
+	<!--End of Page 5 Social features  -->
+	
 	
 </body>
 </html>
