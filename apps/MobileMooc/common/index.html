@@ -102,8 +102,6 @@
 		<div data-role="content">
 			<ul id="coursesList" data-role="listview" data-filter="true"
 				data-filter-placeholder="Search Courses..." data-inset="true">
-			<!-- 	<li id="listitem"><a href="#courseDetails"
-			 		onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li> -->
 			</ul>			
 		</div>
 		
@@ -170,17 +168,18 @@
 
 		<!-- <div data-role="content" id="pageContent"> -->
 		
-		<h3>	<label id="courseTitle" style="text-align: center; padding:10px; ">Raising
+		<h2>	<label id="courseTitle" style="text-align: center; padding:10px; ">Raising
 				Money for Startups <a id="courseLink"
 				href="https://www.udemy.com/raising-capital-for-startups/"></a>
-			</label> </h3>
+			</label> </h2>
 			
 			 <img id="courseImage" style="width: 100%" height="200"
 				src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" />
 
-			<label id="courseDescription"
-				style="font-family: Apple LiSung; padding:10px;">7
-				top founders and CEOs explain how to raise money for your startup!</label>
+		<b>	<div id="courseDescription"
+				style="padding:10px;">7
+				top founders and CEOs explain how to raise money for your startup!</div>
+				</b>
 		<!-- </div> -->
 
 
@@ -197,8 +196,9 @@
 
 				</div>
 				<div class="ui-block-b"  style="text-align: center; padding-top:15px" >
-				<div >Professor. </div>
-				<div id="profName" ></div>
+				<b><div>Professor. </div>				</b>
+<b>				<div id="profName" ></div></b>
+
 				</div>
 			</div>
 			<div class="ui-grid-a" style="padding-top:10px">
@@ -272,27 +272,24 @@
 			$('#contentDescription').text(courseData.promoAsset.description);
 		//	$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);			
 				
-			/* var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
-			$('#video1').text(courseData.coursevideos.title1);
-			$('#video1').attr("onclick",vid1); */
-			
-			 var vid1 = "openshareurl('"+courseData.coursevideos.video1+"')";
+					
+			var vid1 = "launchbrowser('"+courseData.coursevideos.video1+"')";
 			$('#video1').text(courseData.coursevideos.title1);
 			$('#video1').attr("onclick",vid1); 
 			
-			var vid2 = "loadVideo('"+courseData.coursevideos.video2+"')";
+			var vid2 = "launchbrowser('"+courseData.coursevideos.video2+"')";
 			$('#video2').text(courseData.coursevideos.title2);
 			$('#video2').attr("onclick",vid2);
 			
-			var vid3 = "loadVideo('"+courseData.coursevideos.video3+"')";
+			var vid3 = "launchbrowser('"+courseData.coursevideos.video3+"')";
 			$('#video3').text(courseData.coursevideos.title3);
 			$('#video3').attr("onclick",vid3);
 			
-			var vid4 = "loadVideo('"+courseData.coursevideos.video4+"')";
+			var vid4 = "launchbrowser('"+courseData.coursevideos.video4+"')";
 			$('#video4').text(courseData.coursevideos.title4);
 			$('#video4').attr("onclick",vid4);
 				
-			var vid5 = "loadVideo('"+courseData.coursevideos.video5+"')";
+			var vid5 = "launchbrowser('"+courseData.coursevideos.video5+"')";
 			$('#video5').text(courseData.coursevideos.title5);
 			$('#video5').attr("onclick",vid5);
 			
@@ -338,22 +335,21 @@
 		<div data-role="content" style="padding: 15px">
 			<ul data-role="listview" id="listview" data-inset="true">
 				<li data-role="list-divider" id="divider">Lectures</li>
-				<li id="saa"><a href="#popupVideo" class="wrap" id ="video1" data-rel="popup" >Lecture 1</a></li>
-				<li id="saa"><a href="#popupVideo" class="wrap" id ="video2" data-rel="popup" >Lecture 2</a></li>
-				<li id="saa"><a href="#popupVideo" class="wrap" id ="video3" data-rel="popup" >Lecture 3</a></li>
-				<li id="saa"><a href="#popupVideo" class="wrap" id ="video4" data-rel="popup" >Lecture 4</a></li>
-				<li id="saa"><a href="#popupVideo" class="wrap" id ="video5" data-rel="popup" >Lecture 5</a></li>
-				<li id="saa"><a href="#" onclick="window.open('http://press.princeton.edu/chapters/s9687.pdf', '_blank', 'location=no');" class="wrap" id ="video5" data-rel="popup" >Lecture 5</a></li>
+				<li id="saa"><a href="#" class="wrap" id ="video1" data-rel="popup" >Lecture 1</a></li>
+				<li id="saa"><a href="#" class="wrap" id ="video2" data-rel="popup" >Lecture 2</a></li>
+				<li id="saa"><a href="#" class="wrap" id ="video3" data-rel="popup" >Lecture 3</a></li>
+				<li id="saa"><a href="#" class="wrap" id ="video4" data-rel="popup" >Lecture 4</a></li>
+				<li id="saa"><a href="#" class="wrap" id ="video5" data-rel="popup" >Lecture 5</a></li>
 			</ul>
 
 
-			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
+<!-- 			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
 				data-theme="d" data-tolerance="15,15" class="ui-content">
 
 					<iframe  id="videoFrame" src="" width="280"
 					height="300" seamless></iframe> 
 			
-			</div>
+			</div> -->
 			<!-- http://player.vimeo.com/video/41135183 -->
 
 		</div>
@@ -420,6 +416,12 @@
 		<script>
 		
 		function openpdf(fileurl){
+		
+		var isAndroid = (navigator.userAgent.match(/Android/i)) == "Android" ? true : false
+
+		if(isAndroid) {
+		fileurl = "https://docs.google.com/viewer?url="+fileurl;
+		}
 		
 		window.open(fileurl, '_blank','location=yes','closebuttoncaption=back');
 		
@@ -614,6 +616,11 @@
             
             });
 	
+		function launchbrowser(url){
+		
+		window.open(url, '_blank','location=yes','closebuttoncaption=back');
+		
+		}
 	
 	</script>
 		
