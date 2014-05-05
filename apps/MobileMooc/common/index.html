@@ -1,25 +1,621 @@
 <!DOCTYPE HTML>
 <html>
-    	<head>
-    		<meta charset="UTF-8">
-    		<title>index</title>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 <link rel="shortcut icon" href="images/favicon.png">
-    		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    		<link rel="stylesheet" href="css/main.css">
-    		<script>window.$ = window.jQuery = WLJQ;</script>
-    		<script type="text/javascript" src="dojox/mobile/deviceTheme.js"></script>
-    		<script type="text/javascript" data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false" src="dojo/dojo.js"></script>
-    	</head>
-    	<body style="display:">
-    		<div data-dojo-type="dojox.mobile.ScrollableView" id="view0" data-dojo-props="selected:true">
-		<!--application UI goes here-->
-    			Hello Worklight
-    		</div>
-    		<script src="js/initOptions.js"></script>
-    		<script src="js/main.js"></script>
-    		<script src="js/messages.js"></script>
-    	</body>
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/jquery.mobile-1.4.2.js"></script>
+
+<style>
+.wrap {
+    white-space: normal !important;
+}
+
+/*
+//Code to add background image to all the screens
+ .ui-page.ui-body-c {
+    background: url(images/moocbg.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;  
+} */
+
+/* .ui-page
+{
+   background: transparent url(images/moocbg2.png) no-repeat center center; background-size:cover;
+} */
+</style>
+
+</head>
+<body>
+
+<!-- Login Page Start  -->
+<div data-role="page" id="loginPage">
+ <div data-role="header">
+  <h2>Login</h2>
+</div>
+	<div id="contentLogin">
+            <form>
+                <label style="font-weight:bold;">Username:</label>
+                <div class="formTexts" style="margin:10px"><input type="text" name="name" id="username" data-mini="true" placeholder="Username"/></div><br/>
+                <label style="font-weight:bold;">Password:&nbsp;</label>
+                <div class="formTexts" style="margin:10px"><input type="password" size="20" name="password" id="password" data-mini="true" placeholder="Password" /></div><br/>
+    <a href="#" class="buttons" id="loginButton" data-role="button" style="margin:10px">
+        Sign In
+    </a>
+    <br/>
+    <br/>
+    <br/>
+    <p>Not A User?
+    <a href="" id="registerLink"> Register</a></p>
+   </div>
+
+	</div>
+
+<!-- Login Page END  -->
+
+ <!-- Register Page Start -->        
+<div data-role="page" id="register">
+ <div data-role="header">
+                    <h2><span id="backbutton"><i class="fa fa-arrow-circle-left fa-lg"></i></span>Register</h2>
+</div>
+<div id="contentRegister">
+            <form>
+                <label>Username:</label>
+                <div class="formTexts"><input type="text" name="name" id="r_username" data-mini="true" placeholder="Username"/></div><br/>
+                <label>Password:</label>
+                <div class="formTexts"><input type="password" name="password" id="r_password" data-mini="true" placeholder="Password" /></div><br/>
+    <div class="buttons" id="registerButton" data-role="button">
+        Register
+    </div>
+   </div>
+</div> 
+<!-- Register Page End  -->
+
+<!-- Courses List Page Start -->
+	<div data-role="page" id="home">
+				
+				<!-- Sidebar Panel Code -->
+			<div data-role="panel" id="sidebarPanel" data-position="left" data-display="push">
+			<div data-role="header">
+			<h4>My Profile</h4>
+			<ul data-role="listview" data-inset="true" data-theme="c" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+			    <li data-icon="custom" id="skull" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Update Profile</a></div><span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="delete" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Un-Enroll Course</a></div><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="gear" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Settings</a></div><span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span></div></li>
+			    <li data-icon="info" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Logout</a></div><span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>
+			 </ul>
+			</div>
+			</div>
+		<!--  Sidebar Code end -->
+		
+		<div data-role="header">
+			<a href="#sidebarPanel" data-role="button" data-icon="grid"></a><h1>Course List</h1>
+		</div>
+		
+		<div data-role="content">
+			<ul id="coursesList" data-role="listview" data-filter="true"
+				data-filter-placeholder="Search Courses..." data-inset="true">
+			<!-- 	<li id="listitem"><a href="#courseDetails"
+			 		onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li> -->
+			</ul>			
+		</div>
+		
+
+		<div data-role="footer"></div>
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		//	$(document).ready(function() {
+		
+		function getCourses(){
+				$.ajax({
+
+					type : "GET",
+					url : "http://mobile-mooc.herokuapp.com/api/courses",
+					dataType : "json",
+					// work with the response
+					success : function(response) {
+						console.log(response);
+					//	alert('success');
+						onRetrieve(response);
+					},
+					error : function(response) {
+						console.log(response);
+						alert('error');
+					//	onRetrieve(response);
+					}
+				});
+				}
+		//	});
+		</script>
+
+		<script>
+			function onRetrieve(courseList) {
+			
+				var listItemHTML = [];
+    			$.each(courseList, function(index, value){
+    			listItemHTML[index] = "<a href='#courseDetails' class='wrap' onclick=getCourseDetails('"+value["_id"]+"')  data-id='"+value["_id"]+"'><img src='"+value["images"].img_100x100+"' width='80px' height='80px'></img>"+ value["title"] +"</a>"
+    				});
+    				displayCourseList(listItemHTML);
+    			}
+    	
+    			function displayCourseList(courseList){
+
+    					for(var i=0;i<courseList.length;i++){
+    						$("<li/>").appendTo("#coursesList").html(courseList[i]);
+    						$("#coursesList").listview('refresh');
+    					}
+    					}	
+    					</script>
+
+	</div>
+	<!-- /page -->
+
+
+	<div data-role="page" id="courseDetails">
+		<div data-role="header">
+			<h1>Course Details</h1>
+		</div>
+
+
+
+
+		<!-- <div data-role="content" id="pageContent"> -->
+		
+		<h3>	<label id="courseTitle" style="text-align: center; padding:10px; ">Raising
+				Money for Startups <a id="courseLink"
+				href="https://www.udemy.com/raising-capital-for-startups/"></a>
+			</label> </h3>
+			
+			 <img id="courseImage" style="width: 100%" height="200"
+				src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" />
+
+			<label id="courseDescription"
+				style="font-family: Apple LiSung; padding:10px;">7
+				top founders and CEOs explain how to raise money for your startup!</label>
+		<!-- </div> -->
+
+
+		<div data-role="content" id="pageContent0">
+
+
+
+		<div data-role="content" id="pageContent0">
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a" style="text-align: top">
+					<img id="profImage" height="80" width="80"
+						src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" />
+
+				</div>
+				<div class="ui-block-b"  style="text-align: center; padding-top:15px" >
+				<div >Professor. </div>
+				<div id="profName" ></div>
+				</div>
+			</div>
+			<div class="ui-grid-a" style="padding-top:10px">
+				<div class="ui-block-a">No of Lectures</div>
+				<div class="ui-block-b" id="lectureNo" style="text-align: center">10</div>
+			</div>
+			<div class="ui-grid-a" style="padding-top:10px">
+				<div class="ui-block-a">No of Subscribers</div>
+				<div class="ui-block-b" id="subscriberNo" style="text-align: center">Dave McClure</div>
+			</div>
+		
+		</div>
+		
+				<ul id="contentList" data-role="listview" data-inset="true" style="padding:20px">
+				<!-- 	<li id="contentTitle"><a href="" id="item0">Item</a></li> -->
+					<!-- <li id="contentDescription"><a href="" id="item1">Item</a></li> -->
+					<li id="videoPage"><a href="#coursevideos" id="viewlectures">View Lectures</a></li>
+					<li id="notespage"><a href="#lecturenotes" id="viewlectures">Read Lecture Notes</a></li>
+					<li id="notespage"><a href="#social" id="">Share this Course</a></li>
+				</ul>
+			
+
+
+			<div data-role="navbar" id="navbar">
+				<ul>
+					<li><a href="#home" id="home">Home</a></li>
+					<li><a href="#" id="Drop">Drop</a></li>
+					<li><a href="#" id="Add"
+						onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a></li>
+				</ul>
+			</div>
+
+
+		</div>
+
+
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		function getCourseDetails(courseID){
+						$.ajax({
+
+					type : "GET",
+					url : "http://mobile-mooc.herokuapp.com/api/courses/"+courseID,
+					dataType : "json",
+					// work with the response
+					success : function(response) {
+						console.log(response);
+						populateCourseData(response);
+					},
+					error : function(response) {
+						console.log(response);
+						alert('error');
+					}
+				});
+		
+		}
+		
+		function populateCourseData(courseData){
+		
+			$('#courseTitle').text(courseData.title);
+			$('#courseDescription').text(courseData.headline);
+			$('#courseImage').attr("src", courseData.images.img_200_H);
+			$('#courseLink').text(courseData.url);
+			$('#profName').text(courseData.owner.title);
+			$('#profImage').attr("src", courseData.owner.images.img_100x100);
+			$('#lectureNo').text(courseData.numLectures);
+			$('#subscriberNo').text(courseData.numSubscribers);
+			$('#contentTitle').text(courseData.promoAsset.title);
+			$('#contentDescription').text(courseData.promoAsset.description);
+		//	$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);			
+				
+			/* var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
+			$('#video1').text(courseData.coursevideos.title1);
+			$('#video1').attr("onclick",vid1); */
+			
+			 var vid1 = "openshareurl('"+courseData.coursevideos.video1+"')";
+			$('#video1').text(courseData.coursevideos.title1);
+			$('#video1').attr("onclick",vid1); 
+			
+			var vid2 = "loadVideo('"+courseData.coursevideos.video2+"')";
+			$('#video2').text(courseData.coursevideos.title2);
+			$('#video2').attr("onclick",vid2);
+			
+			var vid3 = "loadVideo('"+courseData.coursevideos.video3+"')";
+			$('#video3').text(courseData.coursevideos.title3);
+			$('#video3').attr("onclick",vid3);
+			
+			var vid4 = "loadVideo('"+courseData.coursevideos.video4+"')";
+			$('#video4').text(courseData.coursevideos.title4);
+			$('#video4').attr("onclick",vid4);
+				
+			var vid5 = "loadVideo('"+courseData.coursevideos.video5+"')";
+			$('#video5').text(courseData.coursevideos.title5);
+			$('#video5').attr("onclick",vid5);
+			
+			populateCourseNotes(courseData);
+		}
+		
+		function populateCourseNotes(courseData){
+		
+			var file1 = "openpdf('"+courseData.coursepdf.file1+"')";
+			$('#pdf1').text(courseData.coursevideos.title1);
+			$('#pdf1').attr("onclick",file1);
+			
+			var file2 = "openpdf('"+courseData.coursepdf.file2+"')";
+			$('#pdf2').text(courseData.coursevideos.title2);
+			$('#pdf2').attr("onclick",file2);
+			
+			var file3 = "openpdf('"+courseData.coursepdf.file3+"')";
+			$('#pdf3').text(courseData.coursevideos.title3);
+			$('#pdf3').attr("onclick",file3);
+			
+			var file4 = "openpdf('"+courseData.coursepdf.file4+"')";
+			$('#pdf4').text(courseData.coursevideos.title4);
+			$('#pdf4').attr("onclick",file4);
+				
+			var file4 = "openpdf('"+courseData.coursepdf.file5+"')";
+			$('#pdf5').text(courseData.coursevideos.title5);
+			$('#pdf5').attr("onclick",file5);
+		
+		}
+		
+		
+		</script>
+
+
+
+	</div>
+	<!--End of page 2  -->
+	<div data-role="page" id="coursevideos">
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Course Lectures</h3>
+		</div>
+
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" id="listview" data-inset="true">
+				<li data-role="list-divider" id="divider">Lectures</li>
+				<li id="saa"><a href="#popupVideo" class="wrap" id ="video1" data-rel="popup" >Lecture 1</a></li>
+				<li id="saa"><a href="#popupVideo" class="wrap" id ="video2" data-rel="popup" >Lecture 2</a></li>
+				<li id="saa"><a href="#popupVideo" class="wrap" id ="video3" data-rel="popup" >Lecture 3</a></li>
+				<li id="saa"><a href="#popupVideo" class="wrap" id ="video4" data-rel="popup" >Lecture 4</a></li>
+				<li id="saa"><a href="#popupVideo" class="wrap" id ="video5" data-rel="popup" >Lecture 5</a></li>
+				<li id="saa"><a href="#" onclick="window.open('http://press.princeton.edu/chapters/s9687.pdf', '_blank', 'location=no');" class="wrap" id ="video5" data-rel="popup" >Lecture 5</a></li>
+			</ul>
+
+
+			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
+				data-theme="d" data-tolerance="15,15" class="ui-content">
+
+					<iframe  id="videoFrame" src="" width="280"
+					height="300" seamless></iframe> 
+			
+			</div>
+			<!-- http://player.vimeo.com/video/41135183 -->
+
+		</div>
+
+
+		<div data-role="navbar" id="navbar">
+			<ul>
+				<li><a href="#home" id="home">Home</a></li>
+				<li><a href="#" id="Drop">Drop</a></li>
+				<li><a href="#" id="Add"
+					onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a></li>
+			</ul>
+		</div>
+		
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		
+		function loadVideo(videoUrl){
+		
+		$('#videoFrame').attr("src", videoUrl);
+		
+		}
+		
+		
+		</script>
+		
+		
+	</div>
+	<!--End of Page 3 Video Lectures  -->
+	
+	<!-- Page 4 Lecture Notes -->
+	<div data-role="page" id="lecturenotes">
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Course notes</h3>
+		</div>
+
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" id="pdflist" data-inset="true">
+				<li data-role="list-divider" id="divider">Lectures</li>
+				<li id="saa"><a href="#" onclick="" class="wrap" id ="pdf1" data-rel="popup" >Lecture 1</a></li>
+				<li id="saa"><a href="#" onclick="" class="wrap" id ="pdf2" data-rel="popup" >Lecture 2</a></li>
+				<li id="saa"><a href="#" onclick="" class="wrap" id ="pdf3" data-rel="popup" >Lecture 3</a></li>
+				<li id="saa"><a href="#" onclick="" class="wrap" id ="pdf4" data-rel="popup" >Lecture 4</a></li>
+				<li id="saa"><a href="#" onclick="" class="wrap" id ="pdf5" data-rel="popup" >Lecture 5</a></li>
+			</ul>
+
+		</div>
+
+
+		<div data-role="navbar" id="navbar">
+			<ul>
+				<li><a href="#home" id="home">Home</a></li>
+				<li><a href="#" id="Drop">Drop</a></li>
+				<li><a href="#" id="Add"
+					onclick="">Add </a></li>
+			</ul>
+		</div>
+		
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		
+		function openpdf(fileurl){
+		
+		window.open(fileurl, '_blank','location=yes','closebuttoncaption=back');
+		
+		}
+		
+		</script>
+		
+		
+	</div>
+	<!--End of Page 4 Lecture Notes  -->
+	
+		<!-- Page 5 Social Features -->
+	<div data-role="page" id="social">
+
+		<style type="text/css">
+#share-buttons img {
+	width: 70px;
+	padding: 15px;
+	padding-right: 30px;
+		padding-left: 30px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
+}
+</style>
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Share Course</h3>
+		</div>
+
+	<div data-role="content" style="padding: 15px">
+		<div id="share-buttons">
+
+			<!-- Facebook -->
+			<a
+				href="#" data-rel="popup"  onclick='openshareurl("http://www.facebook.com/sharer.php?u=http://www.coursera.com")' target="_blank"
+				><img
+				src="images/facebook.png"
+				alt="Facebook" /></a>
+
+			<!-- Twitter -->
+			<a
+				href="#" onclick='openshareurl("http://twitter.com/share?url=http://www.coursera.com&text=Check out this Mobile Mooc App")'
+				target="_blank"><img
+				src="images/twitter.png"
+				alt="Twitter" /></a>
+
+
+			<!-- Google+ -->
+			<a
+				href="#"
+				onclick='openshareurl("https://plus.google.com/share?url=http://www.simplesharebuttons.com")'
+				target="_blank"><img
+				src="images/google.png"
+				alt="Google" /></a>
+
+			<!-- Digg -->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.digg.com/submit?url=http://www.simplesharebuttons.com")'
+				target="_blank"><img
+				src="images/diggit.png"
+				alt="Digg" /></a>
+
+			<!-- Reddit -->
+			<a
+				href="#"
+				onclick='openshareurl("http://reddit.com/submit?url=http://www.simplesharebuttons.com&title=Simple Share Buttons")'
+				target="_blank"><img
+				src="images/reddit.png"
+				alt="Reddit" /></a>
+
+			<!-- LinkedIn -->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.linkedin.com/shareArticle?mini=true&url=http://www.coursera.org")'
+				target="_blank"><img
+				src="images/linkedin.png"
+				alt="LinkedIn" /></a>
+
+			<!-- StumbleUpon-->
+			<a
+				href="#"
+				onclick='openshareurl("http://www.stumbleupon.com/submit?url=http://www.coursera.org&title=Check Out this Mobile MOOC App")'
+				target="_blank"><img
+				src="images/stumbleupon.png"
+				alt="StumbleUpon" /></a>
+
+		</div>
+		
+		
+		<div data-role="popup" id="popupShare" data-overlay-theme="a"
+				data-theme="d" data-tolerance="15,15" class="ui-content">
+
+					 <iframe  id="shareFrame" src="" width="250"
+					height="300" seamless></iframe> 
+			 
+			</div>
+	</div>
+
+		<div data-role="navbar" id="navbar">
+			<ul>
+				<li><a href="#home" id="home">Home</a></li>
+				<li><a href="#" id="Drop">Drop</a></li>
+				<li><a href="#" id="Add"
+					onclick="">Add </a></li>
+			</ul>
+		</div>
+		
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		
+		var sharetext;
+		var sharetitle;
+		//var shareurl ="http://www.coursera.org";
+		//var fburl= "http://www.facebook.com/sharer.php?u="+shareurl;
+		
+		function openshareurl(shareurl){
+		
+		window.open(shareurl, '_blank','location=yes','closebuttoncaption=back');
+	//	$('#shareFrame').attr("src", shareurl);
+		
+		}
+		
+
+		</script>
+		
+		
+	</div>
+	<!--End of Page 5 Social features  -->
+	
+	
+	<!--  Common Scripts  -->
+	 <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+            
+            $("#registerLink").click(function(){
+                $.mobile.navigate("#register",{});
+            });
+            $("#registerButton").click(function(){
+            
+            var uname = $("#r_username").val();
+            var pwd = $("#r_password").val();
+            
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                }).done(function(data) {
+                  $.mobile.navigate("#login",{});
+                });
+            
+            
+            });
+            $("#loginButton").click(function(){
+            
+            var uname = $("#username").val();
+            var pwd = $("#password").val();
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users/login",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                })
+                .done(function(data) {
+                  console.log(data);
+                  $("#username").val('');
+                  $("#password").val('');
+                  if ($('#errorDiv').length){
+                        $('#errorDiv').remove();
+                    }
+                                                          getCourses();
+                  $.mobile.navigate("#home",{});
+
+                })
+                .fail(function(data) {
+                    var errorDivHtml = "<div id='errorDiv' style='text-align:center;color:red;width:180px;height:20px;border:1px solid red;border-radius:5px;margin-left:80px;margin-top:5px'>Sorry!Please Try Again!</div>"
+                    if ($('#errorDiv').length>0){
+                        $('#errorDiv').remove();
+                        $("#loginButton").after(errorDivHtml);    
+                    }
+                    else{
+                        $("#loginButton").after(errorDivHtml);
+                    }
+                    $("#username").val('');
+                  $("#password").val('');
+                });
+            
+            });
+	
+	
+	</script>
+		
+</body>
 </html>
