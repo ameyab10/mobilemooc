@@ -147,7 +147,7 @@
     	
     			function displayCourseList(courseList){
 
-    					for(var i=0;i<courseList.length;i++){
+    					for(var i=courseList.length; i>0 ;i--){
     						$("<li/>").appendTo("#coursesList").html(courseList[i]);
     						$("#coursesList").listview('refresh');
     					}

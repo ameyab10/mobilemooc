@@ -37,7 +37,9 @@
 .wrap {
     white-space: normal !important;
 }
-/* .ui-page.ui-body-c {
+/*
+//Code to add background image to all the screens
+ .ui-page.ui-body-c {
     background: url(images/moocbg.png);
     background-repeat:no-repeat;
     background-position:center center;
@@ -50,23 +52,117 @@
 </style>
     </head>
     <body>
-        <div data-role="page" id="home">
-		<!-- id="home" data-theme="c" -->
+<!-- Login Page Start  -->
+        <div data-role="page" id="loginPage">
             <div data-role="header">
+                <h2>Login</h2>
+            </div>
+            <div id="contentLogin">
+                <form>
+                    <label style="font-weight:bold;">Username:</label>
+                    <div class="formTexts" style="margin:10px">
+                        <input data-mini="true" id="username" name="name" placeholder="Username" type="text">
+                    </div>
+                    <br>
+                    <label style="font-weight:bold;">Password:&nbsp;</label>
+                    <div class="formTexts" style="margin:10px">
+                        <input data-mini="true" id="password" name="password" placeholder="Password" size="20" type="password">
+                    </div>
+                    <br>
+                    <a class="buttons" data-role="button" href="#" id="loginButton" style="margin:10px">
+        Sign In
+    </a>
+                    <br>
+                    <br>
+                    <br>
+                    <p>Not A User?
+    <a href="" id="registerLink"> Register</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+<!-- Login Page END  -->
+ <!-- Register Page Start -->        
+        <div data-role="page" id="register">
+            <div data-role="header">
+                <h2>
+                    <span id="backbutton"><i class="fa fa-arrow-circle-left fa-lg"></i></span>Register</h2>
+            </div>
+            <div id="contentRegister">
+                <label>Username:</label>
+                <div class="formTexts">
+                    <input data-mini="true" id="r_username" name="name" placeholder="Username" type="text">
+                </div>
+                <br>
+                <label>Password:</label>
+                <div class="formTexts">
+                    <input data-mini="true" id="r_password" name="password" placeholder="Password" type="password">
+                </div>
+                <br>
+                <div class="buttons" data-role="button" id="registerButton">
+        Register
+    </div>
+            </div>
+        </div> 
+<!-- Register Page End  -->
+<!-- Courses List Page Start -->
+        <div data-role="page" id="home">
+				<!-- Sidebar Panel Code -->
+            <div data-display="push" data-position="left" data-role="panel" id="sidebarPanel">
+                <div data-role="header">
+                    <h4>My Profile</h4>
+                    <ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-inset="true" data-role="listview" data-theme="c">
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c" data-corners="false" data-icon="custom" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="skull">
+                            <div class="ui-btn-inner ui-li">
+                                <div class="ui-btn-text">
+                                    <a class="ui-link-inherit" href="#">Update Profile</a>
+                                </div>
+                                <span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span>
+                            </div>
+                        </li>
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-c" data-corners="false" data-icon="delete" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                            <div class="ui-btn-inner ui-li">
+                                <div class="ui-btn-text">
+                                    <a class="ui-link-inherit" href="#">Un-Enroll Course</a>
+                                </div>
+                                <span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span>
+                            </div>
+                        </li>
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="gear" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                            <div class="ui-btn-inner ui-li">
+                                <div class="ui-btn-text">
+                                    <a class="ui-link-inherit" href="#">Settings</a>
+                                </div>
+                                <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
+                            </div>
+                        </li>
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="info" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                            <div class="ui-btn-inner ui-li">
+                                <div class="ui-btn-text">
+                                    <a class="ui-link-inherit" href="#">Logout</a>
+                                </div>
+                                <span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+		<!--  Sidebar Code end -->
+            <div data-role="header">
+                <a data-icon="grid" data-role="button" href="#sidebarPanel"></a>
                 <h1>Course List</h1>
             </div>
             <div data-role="content">
                 <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
-			<!-- 	<li id="listitem"><a href="#courseDetails"
-			 		onclick="getCourseDetails('5358b52375be840200ed5c76')" id="item">Item</a></li> -->
-                </ul>
+                </ul>			
             </div>
             <div data-role="footer"></div>
             <script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
-			$(document).ready(function() {
+		//	$(document).ready(function() {
+		function getCourses(){
 				$.ajax({
 					type : "GET",
 					url : "http://mobile-mooc.herokuapp.com/api/courses",
@@ -83,7 +179,8 @@
 					//	onRetrieve(response);
 					}
 				});
-			});
+				}
+		//	});
 		</script>
 		<script>
 			function onRetrieve(courseList) {
@@ -107,14 +204,16 @@
                 <h1>Course Details</h1>
             </div>
 		<!-- <div data-role="content" id="pageContent"> -->
-            <h3>	
+            <h2>	
                 <label id="courseTitle" style="text-align: center; padding:10px; ">Raising
 				Money for Startups <a href="https://www.udemy.com/raising-capital-for-startups/" id="courseLink"></a>
 			</label> 
-            </h3>
+            </h2>
             <img height="200" id="courseImage" src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" style="width: 100%">
-			<label id="courseDescription" style="font-family: Apple LiSung; padding:10px;">7
-				top founders and CEOs explain how to raise money for your startup!</label>
+		<b>	
+                <div id="courseDescription" style="padding:10px;">7
+				top founders and CEOs explain how to raise money for your startup!</div>
+            </b>
 		<!-- </div> -->
             <div data-role="content" id="pageContent0">
                 <div data-role="content" id="pageContent0">
@@ -123,8 +222,12 @@
                             <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
 				</div>
                         <div class="ui-block-b" style="text-align: center; padding-top:15px">
-                            <div>Professor. </div>
-                            <div id="profName"></div>
+                            <b>
+                                <div>Professor. </div>				
+                            </b>
+<b>				
+                                <div id="profName"></div>
+                            </b>
                         </div>
                     </div>
                     <div class="ui-grid-a" style="padding-top:10px">
@@ -195,22 +298,19 @@
 			$('#contentTitle').text(courseData.promoAsset.title);
 			$('#contentDescription').text(courseData.promoAsset.description);
 		//	$('#courseVideo').attr("src", courseData.promoAsset.streamUrl);			
-			/* var vid1 = "loadVideo('"+courseData.coursevideos.video1+"')";
-			$('#video1').text(courseData.coursevideos.title1);
-			$('#video1').attr("onclick",vid1); */
-			 var vid1 = "openshareurl('"+courseData.coursevideos.video1+"')";
+			var vid1 = "launchbrowser('"+courseData.coursevideos.video1+"')";
 			$('#video1').text(courseData.coursevideos.title1);
 			$('#video1').attr("onclick",vid1); 
-			var vid2 = "loadVideo('"+courseData.coursevideos.video2+"')";
+			var vid2 = "launchbrowser('"+courseData.coursevideos.video2+"')";
 			$('#video2').text(courseData.coursevideos.title2);
 			$('#video2').attr("onclick",vid2);
-			var vid3 = "loadVideo('"+courseData.coursevideos.video3+"')";
+			var vid3 = "launchbrowser('"+courseData.coursevideos.video3+"')";
 			$('#video3').text(courseData.coursevideos.title3);
 			$('#video3').attr("onclick",vid3);
-			var vid4 = "loadVideo('"+courseData.coursevideos.video4+"')";
+			var vid4 = "launchbrowser('"+courseData.coursevideos.video4+"')";
 			$('#video4').text(courseData.coursevideos.title4);
 			$('#video4').attr("onclick",vid4);
-			var vid5 = "loadVideo('"+courseData.coursevideos.video5+"')";
+			var vid5 = "launchbrowser('"+courseData.coursevideos.video5+"')";
 			$('#video5').text(courseData.coursevideos.title5);
 			$('#video5').attr("onclick",vid5);
 			populateCourseNotes(courseData);
@@ -243,27 +343,26 @@
                 <ul data-inset="true" data-role="listview" id="listview">
                     <li data-role="list-divider" id="divider">Lectures</li>
                     <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video1">Lecture 1</a>
+                        <a class="wrap" data-rel="popup" href="#" id="video1">Lecture 1</a>
                     </li>
                     <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video2">Lecture 2</a>
+                        <a class="wrap" data-rel="popup" href="#" id="video2">Lecture 2</a>
                     </li>
                     <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video3">Lecture 3</a>
+                        <a class="wrap" data-rel="popup" href="#" id="video3">Lecture 3</a>
                     </li>
                     <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video4">Lecture 4</a>
+                        <a class="wrap" data-rel="popup" href="#" id="video4">Lecture 4</a>
                     </li>
                     <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#popupVideo" id="video5">Lecture 5</a>
-                    </li>
-                    <li id="saa">
-                        <a class="wrap" data-rel="popup" href="#" id="video5" onclick="window.open('http://press.princeton.edu/chapters/s9687.pdf', '_blank', 'location=no');">Lecture 5</a>
+                        <a class="wrap" data-rel="popup" href="#" id="video5">Lecture 5</a>
                     </li>
                 </ul>
-                <div class="ui-content" data-overlay-theme="a" data-role="popup" data-theme="d" data-tolerance="15,15" id="popupVideo">
-                    <iframe height="300" id="videoFrame" seamless="" src="" width="280"></iframe> 
-                </div>
+<!-- 			<div data-role="popup" id="popupVideo" data-overlay-theme="a"
+				data-theme="d" data-tolerance="15,15" class="ui-content">
+					<iframe  id="videoFrame" src="" width="280"
+					height="300" seamless></iframe> 
+			</div> -->
 			<!-- http://player.vimeo.com/video/41135183 -->
             </div>
             <div data-role="navbar" id="navbar">
@@ -332,9 +431,12 @@
 		<script src="js/messages.js"></script>
 		<script>
 		function openpdf(fileurl){
+		var isAndroid = (navigator.userAgent.match(/Android/i)) == "Android" ? true : false
+		if(isAndroid) {
+		fileurl = "https://docs.google.com/viewer?url="+fileurl;
+		}
 		window.open(fileurl, '_blank','location=yes','closebuttoncaption=back');
 		}
-		//openpdf('http://press.princeton.edu/chapters/s9687.pdf');
 		</script>
         </div>
 	<!--End of Page 4 Lecture Notes  -->
@@ -343,7 +445,9 @@
             <style type="text/css">
 #share-buttons img {
 	width: 70px;
-	padding: 10px;
+	padding: 15px;
+	padding-right: 30px;
+		padding-left: 30px;
 	border: 0;
 	box-shadow: 0;
 	display: inline;
@@ -354,10 +458,8 @@
             </div>
             <div data-role="content" style="padding: 15px">
                 <div id="share-buttons">
-                    <a href="#" onclick="openshareurl(&quot;https://class.coursera.org/android-001/lecture/13&quot;)" target="_blank">
-		 Test video </a>
 			<!-- Facebook -->
-			<a data-rel="popup" href="#" onclick="openshareurl(&quot;http://www.facebook.com/sharer.php?u=http://www.coursera.com&quot;)" target="_blank"><img alt="Facebook" src="images/facebook.png"></a>
+                    <a data-rel="popup" href="#" onclick="openshareurl(&quot;http://www.facebook.com/sharer.php?u=http://www.coursera.com&quot;)" target="_blank"><img alt="Facebook" src="images/facebook.png"></a>
 			<!-- Twitter -->
 			<a href="#" onclick="openshareurl(&quot;http://twitter.com/share?url=http://www.coursera.com&amp;text=Check out this Mobile Mooc App&quot;)" target="_blank"><img alt="Twitter" src="images/twitter.png"></a>
 			<!-- Google+ -->
@@ -403,5 +505,61 @@
 		</script>
         </div>
 	<!--End of Page 5 Social features  -->
+	<!--  Common Scripts  -->
+        <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+            $("#registerLink").click(function(){
+                $.mobile.navigate("#register",{});
+            });
+            $("#registerButton").click(function(){
+            var uname = $("#r_username").val();
+            var pwd = $("#r_password").val();
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                }).done(function(data) {
+                  $.mobile.navigate("#login",{});
+                });
+            });
+            $("#loginButton").click(function(){
+            var uname = $("#username").val();
+            var pwd = $("#password").val();
+            $.ajax({
+                  url: "http://mobile-mooc.herokuapp.com/api/users/login",
+                  type: "POST",
+                  data: { "username": uname, "password": pwd},
+                  dataType: "json"
+                })
+                .done(function(data) {
+                  console.log(data);
+                  $("#username").val('');
+                  $("#password").val('');
+                  if ($('#errorDiv').length){
+                        $('#errorDiv').remove();
+                    }
+                                                          getCourses();
+                  $.mobile.navigate("#home",{});
+                })
+                .fail(function(data) {
+                    var errorDivHtml = "<div id='errorDiv' style='text-align:center;color:red;width:180px;height:20px;border:1px solid red;border-radius:5px;margin-left:80px;margin-top:5px'>Sorry!Please Try Again!</div>"
+                    if ($('#errorDiv').length>0){
+                        $('#errorDiv').remove();
+                        $("#loginButton").after(errorDivHtml);    
+                    }
+                    else{
+                        $("#loginButton").after(errorDivHtml);
+                    }
+                    $("#username").val('');
+                  $("#password").val('');
+                });
+            });
+		function launchbrowser(url){
+		window.open(url, '_blank','location=yes','closebuttoncaption=back');
+		}
+	</script>
     </body>
 </html>
