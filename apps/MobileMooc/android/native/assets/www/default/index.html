@@ -9,6 +9,7 @@
         <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
         <link href="css/main.css" rel="stylesheet">
         <link href="css/jquery.mobile-1.4.2.css" rel="stylesheet">
+        <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <script>
 		// Define WL namespace.
 		var WL = WL ? WL : {};
@@ -33,6 +34,7 @@
 		<script src="worklight/checksum.js"></script>
 		<script src="js/jquery-1.11.0.js"></script>
 <script src="js/jquery.mobile-1.4.2.js"></script>
+<script src="js/parse-1.2.18.js"></script>
         <style>
 .wrap {
     white-space: normal !important;
@@ -59,12 +61,12 @@
             </div>
             <div id="contentLogin">
                 <form>
-                    <label style="font-weight:bold;">Username:</label>
+                    <label style="font-weight:bold;margin-left:10px;margin-top:10px">Username:</label>
                     <div class="formTexts" style="margin:10px">
                         <input data-mini="true" id="username" name="name" placeholder="Username" type="text">
                     </div>
                     <br>
-                    <label style="font-weight:bold;">Password:&nbsp;</label>
+                    <label style="font-weight:bold;margin-left:10px">Password:&nbsp;</label>
                     <div class="formTexts" style="margin:10px">
                         <input data-mini="true" id="password" name="password" placeholder="Password" size="20" type="password">
                     </div>
@@ -107,28 +109,34 @@
 <!-- Register Page End  -->
 <!-- Courses List Page Start -->
         <div data-role="page" id="home">
-				<!-- Sidebar Panel Code -->
-            <div data-display="push" data-position="left" data-role="panel" id="sidebarPanel">
+            <div data-role="header">
+                <h2>
+                    <span id="sidebar"><i class="fa fa-bars fa-lg" style="float:left"></i></span>Courses <span id="logout"><i class="fa fa-sign-out fa-lg"></i></span>
+                </h2>
+            </div>
+            <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
+            </ul>
+            <div data-display="overlay" data-position="left" data-role="panel" id="sidebarPanel">
                 <div data-role="header">
                     <h4>My Profile</h4>
                     <ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-inset="true" data-role="listview" data-theme="c">
-                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c" data-corners="false" data-icon="custom" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="skull">
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c" data-corners="false" data-icon="custom" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="sidebaraccsettings">
                             <div class="ui-btn-inner ui-li">
                                 <div class="ui-btn-text">
-                                    <a class="ui-link-inherit" href="#">Update Profile</a>
+                                    <a class="ui-link-inherit" href="#">Account Settings</a>
                                 </div>
                                 <span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span>
                             </div>
                         </li>
-                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-c" data-corners="false" data-icon="delete" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="custom" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="sidebarcourses">
                             <div class="ui-btn-inner ui-li">
                                 <div class="ui-btn-text">
-                                    <a class="ui-link-inherit" href="#">Un-Enroll Course</a>
+                                    <a class="ui-link-inherit" href="#">My Courses</a>
                                 </div>
-                                <span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span>
+                                <span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span>
                             </div>
                         </li>
-                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="gear" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="gear" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="sidebarsettings">
                             <div class="ui-btn-inner ui-li">
                                 <div class="ui-btn-text">
                                     <a class="ui-link-inherit" href="#">Settings</a>
@@ -136,7 +144,7 @@
                                 <span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span>
                             </div>
                         </li>
-                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="info" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div">
+                        <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c" data-corners="false" data-icon="info" data-iconpos="right" data-iconshadow="true" data-shadow="false" data-theme="c" data-wrapperels="div" id="sidebarlogout">
                             <div class="ui-btn-inner ui-li">
                                 <div class="ui-btn-text">
                                     <a class="ui-link-inherit" href="#">Logout</a>
@@ -147,17 +155,8 @@
                     </ul>
                 </div>
             </div>
-		<!--  Sidebar Code end -->
-            <div data-role="header">
-                <a data-icon="grid" data-role="button" href="#sidebarPanel"></a>
-                <h1>Course List</h1>
-            </div>
-            <div data-role="content">
-                <ul data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true" data-role="listview" id="coursesList">
-                </ul>			
-            </div>
-            <div data-role="footer"></div>
-            <script src="js/initOptions.js"></script>
+        </div>
+        <script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
@@ -191,27 +190,28 @@
     				displayCourseList(listItemHTML);
     			}
     			function displayCourseList(courseList){
-    					for(var i=0;i<courseList.length;i++){
+    					for(var i=courseList.length; i>0 ;i--){
     						$("<li/>").appendTo("#coursesList").html(courseList[i]);
     						$("#coursesList").listview('refresh');
     					}
     					}	
     					</script>
-        </div>
 	<!-- /page -->
         <div data-role="page" id="courseDetails">
             <div data-role="header">
                 <h1>Course Details</h1>
             </div>
 		<!-- <div data-role="content" id="pageContent"> -->
-            <h3>	
+            <h2>	
                 <label id="courseTitle" style="text-align: center; padding:10px; ">Raising
 				Money for Startups <a href="https://www.udemy.com/raising-capital-for-startups/" id="courseLink"></a>
 			</label> 
-            </h3>
+            </h2>
             <img height="200" id="courseImage" src="https://udemyimages-a.akamaihd.net/course/200_H/anonymous_v2.jpg" style="width: 100%">
-			<label id="courseDescription" style="font-family: Apple LiSung; padding:10px;">7
-				top founders and CEOs explain how to raise money for your startup!</label>
+		<b>	
+                <div id="courseDescription" style="padding:10px;">7
+				top founders and CEOs explain how to raise money for your startup!</div>
+            </b>
 		<!-- </div> -->
             <div data-role="content" id="pageContent0">
                 <div data-role="content" id="pageContent0">
@@ -220,8 +220,12 @@
                             <img height="80" id="profImage" src="https://udemyimages-a.akamaihd.net/user/100x100/anonymous.jpg" width="80">
 				</div>
                         <div class="ui-block-b" style="text-align: center; padding-top:15px">
-                            <div>Professor. </div>
-                            <div id="profName"></div>
+                            <b>
+                                <div>Professor. </div>				
+                            </b>
+<b>				
+                                <div id="profName"></div>
+                            </b>
                         </div>
                     </div>
                     <div class="ui-grid-a" style="padding-top:10px">
@@ -245,17 +249,20 @@
                     <li id="notespage">
                         <a href="#social" id="">Share this Course</a>
                     </li>
+                    <li id="notespage">
+                        <a href="#discussion" id="" onclick="loadPosts()">Discussion Forum</a>
+                    </li>
                 </ul>
                 <div data-role="navbar" id="navbar">
                     <ul>
                         <li>
-                            <a href="#home" id="home">Home</a>
+                            <a data-icon="home" href="#home" id="home">Home</a>
                         </li>
                         <li>
-                            <a href="#" id="Drop">Drop</a>
+                            <a data-icon="minus" href="#" id="Drop">Drop</a>
                         </li>
                         <li>
-                            <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a>
+                            <a data-icon="plus" href="#" id="Add">Add </a>
                         </li>
                     </ul>
                 </div>
@@ -279,6 +286,7 @@
 						alert('error');
 					}
 				});
+				globalCourseID= courseID;
 		}
 		function populateCourseData(courseData){
 			$('#courseTitle').text(courseData.title);
@@ -329,6 +337,7 @@
 		</script>
         </div>
 	<!--End of page 2  -->
+	<!-- Start Page 3 Course Videos  -->
         <div data-role="page" id="coursevideos">
             <div data-position="fixed" data-role="header" id="header">
                 <h3>Course Lectures</h3>
@@ -362,13 +371,10 @@
             <div data-role="navbar" id="navbar">
                 <ul>
                     <li>
-                        <a href="#home" id="home">Home</a>
+                        <a data-icon="home" href="#home" id="home">Home</a>
                     </li>
                     <li>
-                        <a href="#" id="Drop">Drop</a>
-                    </li>
-                    <li>
-                        <a href="#" id="Add" onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a>
+                        <a data-icon="back" href="#courseDetails" id="Drop">Back to Course</a>
                     </li>
                 </ul>
             </div>
@@ -410,13 +416,10 @@
             <div data-role="navbar" id="navbar">
                 <ul>
                     <li>
-                        <a href="#home" id="home">Home</a>
+                        <a data-icon="home" href="#home" id="home">Home</a>
                     </li>
                     <li>
-                        <a href="#" id="Drop">Drop</a>
-                    </li>
-                    <li>
-                        <a href="#" id="Add" onclick="">Add </a>
+                        <a data-icon="back" href="#courseDetails" id="Drop">Back to Course</a>
                     </li>
                 </ul>
             </div>
@@ -474,13 +477,10 @@
             <div data-role="navbar" id="navbar">
                 <ul>
                     <li>
-                        <a href="#home" id="home">Home</a>
+                        <a data-icon="home" href="#home" id="home">Home</a>
                     </li>
                     <li>
-                        <a href="#" id="Drop">Drop</a>
-                    </li>
-                    <li>
-                        <a href="#" id="Add" onclick="">Add </a>
+                        <a data-icon="back" href="#courseDetails" id="Drop">Back to Course</a>
                     </li>
                 </ul>
             </div>
@@ -499,11 +499,142 @@
 		</script>
         </div>
 	<!--End of Page 5 Social features  -->
+	<!-- Page 6 Discussion Forum Start -->
+        <div data-role="page" id="discussion">
+            <div data-position="fixed" data-role="header" id="header">
+                <h3>Discussion Forum</h3>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <ul data-inset="true" data-role="listview" id="discusslist">
+                    <li data-role="list-divider" id="divider">Posts</li>
+                </ul>
+                <textarea id="messagepost"></textarea>
+			<a data-role="button" href="#" id="submitDiscuss" onclick="submitPost()">Post Message</a>
+            </div>
+            <div data-role="navbar" id="navbar">
+                <ul>
+                    <li>
+                        <a data-icon="home" href="#home" id="home">Home</a>
+                    </li>
+                    <li>
+                        <a data-icon="back" href="#courseDetails" id="Drop">Back to Course</a>
+                    </li>
+                </ul>
+            </div>
+            <script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		function loadPosts(){
+		Parse.initialize("OjSr4QuLg9QWtXlptg8CmgO62124xELAake7r3Jq",
+						"FsbUYjZijkyojKTYrIAB2aRlZy61T412NSljoRGD");
+			var Forum = Parse.Object.extend("Forum");
+				var query = new Parse.Query(Forum);
+				query.equalTo("courseid", globalCourseID);
+				query
+						.find({
+							success : function(results) {
+								//alert("Successfully retrieved "
+								//		+ results.length + " messages.");
+								// Do something with the returned Parse.Object values
+								for (var i = 0; i < results.length; i++) {
+									var object = results[i];
+							$("#discusslist").append('<li class="wrap">'+object.get('user')+' : '+object.get('message')+'</li>');
+    						$("#discusslist").listview('refresh');
+								//	alert(object.id + ' - '
+								//			+ object.get('message'));
+								}
+							},
+							error : function(error) {
+								alert("Error: " + error.code + " "
+										+ error.message);
+							}
+						});
+			}
+			function submitPost() {
+				Parse.initialize("OjSr4QuLg9QWtXlptg8CmgO62124xELAake7r3Jq",
+						"FsbUYjZijkyojKTYrIAB2aRlZy61T412NSljoRGD");
+				var Forum = Parse.Object.extend("Forum");
+				// Create a new instance of that class.
+				var forum = new Forum();
+				forum.set("user", globalUser);
+				forum.set("message",
+						document.getElementById("messagepost").value);
+				forum.set("courseid", globalCourseID);
+				forum.save(null, {
+					success : function(forum) {
+						// Execute any logic that should take place after the object is saved.
+						//alert('New object created with objectId: ' + forum.id);
+						$("#discusslist").empty();
+						loadPosts();
+					},
+					error : function(forum, error) {
+						// Execute any logic that should take place if the save fails.
+						// error is a Parse.Error with an error code and description.
+						alert('Failed to create new object, with error code: '
+								+ error.description);
+					}
+				});
+			}
+		</script>
+        </div>
+	<!-- End Page 6 Discussion Forum -->
+<!-- Start Page 7 Settings Page -->
+        <div data-role="page" id="settings">
+            <div data-role="header">
+                <h2>
+                    <span id="s_backbutton"><i class="fa fa-arrow-circle-left fa-lg"></i></span>Settings
+			</h2>
+            </div>
+            <div id="contentSettings">
+                <section>
+                    <span class="tooltip"></span>
+                    <div class="textVol">Volume:</div>
+                    <div id="slider"></div>
+                    <span class="volume"></span>
+                </section>
+                <section id="switchSection">
+                    <fieldset>
+                        <div data-role="fieldcontain">
+                            <label for="checkbox-based-flipswitch">Notifications:</label>
+                            <div class="checkboxDiv">
+                                <input data-role="flipswitch" id="checkbox-based-flipswitch" type="checkbox">
+                            </div>
+                        </div>
+                    </fieldset>
+                </section>
+            </div>
+        </div>
+	<!-- End Page 7 Settings Page -->
+	<!-- Start Page 8 Account Settings Page -->
+        <div data-role="page" id="accountSettings">
+            <div data-role="header">
+                <h2>
+                    <span id="as_backbutton"><i class="fa fa-arrow-circle-left fa-lg"></i></span>Update
+			</h2>
+            </div>
+            <div id="contentRegister">
+                <label>Username:</label>
+                <div class="formTexts">
+                    <input data-mini="true" data-userid="" id="as_username" name="name" placeholder="Username" type="text">
+                </div>
+                <br> 
+                <label>Password:</label>
+                <div class="formTexts">
+                    <input data-mini="true" id="as_password" name="password" placeholder="Password" type="password">
+                </div>
+                <br>
+                <div class="buttons" id="updateButton">Update</div>
+            </div>
+        </div>
+<!-- End Page 8 Account Settings Page -->
 	<!--  Common Scripts  -->
         <script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
+            var globalCourseID;
+            var globalUser;
             $("#registerLink").click(function(){
                 $.mobile.navigate("#register",{});
             });
@@ -522,6 +653,7 @@
             $("#loginButton").click(function(){
             var uname = $("#username").val();
             var pwd = $("#password").val();
+            globalUser = uname;
             $.ajax({
                   url: "http://mobile-mooc.herokuapp.com/api/users/login",
                   type: "POST",
@@ -535,7 +667,7 @@
                   if ($('#errorDiv').length){
                         $('#errorDiv').remove();
                     }
-                                                          getCourses();
+                  getCourses();
                   $.mobile.navigate("#home",{});
                 })
                 .fail(function(data) {
@@ -554,6 +686,121 @@
 		function launchbrowser(url){
 		window.open(url, '_blank','location=yes','closebuttoncaption=back');
 		}
-	</script>
+			// Script for Slider
+			$(function() {
+				var slider = $('#slider'), tooltip = $('.tooltip');
+				tooltip.hide();
+				slider
+						.slider({
+							range : "min",
+							min : 1,
+							value : 35,
+							start : function(event, ui) {
+								tooltip.fadeIn('fast');
+							},
+							slide : function(event, ui) {
+								var value = slider.slider('value'), volume = $('.volume');
+								tooltip.css('left', value).text(ui.value);
+								if (value <= 5) {
+									volume.css('background-position', '0 0');
+								} else if (value <= 25) {
+									volume
+											.css('background-position',
+													'0 -25px');
+								} else if (value <= 75) {
+									volume
+											.css('background-position',
+													'0 -50px');
+								} else {
+									volume
+											.css('background-position',
+													'0 -75px');
+								}
+								;
+							},
+							stop : function(event, ui) {
+								tooltip.fadeOut('fast');
+							},
+						});
+			});
+	//update button PUT method
+    $("#updateButton").click(function(){
+    		var uid = $("#as_username").attr("data-userid");
+    		var uname = $("#as_username").val();
+    		var pwd = $("#as_password").val();
+    		var putUrl = "http://mobile-mooc.herokuapp.com/api/users/"+uid.toString();
+    		$.ajax({
+				  url: putUrl,
+				  type: "PUT",
+  				  data: { "username": uname, "password": pwd},
+  				  dataType: "json"
+				})
+				.done(function(data) {
+				  console.log(data);
+				  $("#as_username").val('');
+				  $("#as_password").val('');
+				  if ($('#errorDiv').length){
+				        $('#errorDiv').remove();
+				    }
+				  $.mobile.navigate("#courses",{});
+				})
+				.fail(function(data) {
+    				var errorDivHtml = "<div id='errorDiv' style='text-align:center;color:red;width:180px;height:20px;border:1px solid red;border-radius:5px;margin-left:80px;margin-top:5px'>Sorry!Please Try Again!</div>"
+    				if ($('#errorDiv').length>0){
+				    	$('#errorDiv').remove();
+				    	$("#updateButton").after(errorDivHtml);    
+				    }
+				    else{
+				    	$("#updateButton").after(errorDivHtml);
+				    }
+				    $("#as_username").val('');
+				  $("#as_password").val('');
+  				});
+    		});
+    		//update button functionality ends
+			//Sidebar Navigation
+			 			$("#sidebar").click(function(){
+    						$( "#sidebarPanel" ).panel("open");
+    			});
+    			$("#logout").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#sidebarlogout").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#backbutton").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#s_backbutton").click(function(){
+    						$.mobile.navigate("#home",{});
+    			});
+    			$("#as_backbutton").click(function(){
+    						$.mobile.navigate("#home",{});
+    			});
+    			$("#sidebarsettings").click(function(){
+    						$.mobile.navigate("#settings",{});
+    			});
+    			$("#sidebaraccsettings").click(function(){
+    						//populate username and password by getting
+    							$.ajax({
+								  url: "http://mobile-mooc.herokuapp.com/api/users/"+$("#as_username").attr("data-userid"),
+								  type: "GET",
+								  dataType: "json"
+								}).done(function(data) {
+										console.log('here');
+								  		$("#as_username").val(data["username"]);
+				 					    $("#as_password").val(data["password"]);
+								})
+								.fail(function(data) {
+				    					console.log(data);
+				  				}); 
+    						//code ends
+    						$.mobile.navigate("#accountSettings",{});
+    			});
+    			$("#sidebarcourses").click(function(){
+    						$( "#sidebarPanel" ).panel("close");
+    						$.mobile.navigate("#courses",{});
+    			});
+		</script>
     </body>
 </html>

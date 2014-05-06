@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 <script src="js/jquery-1.11.0.js"></script>
 <script src="js/jquery.mobile-1.4.2.js"></script>
 <script src="js/parse-1.2.18.js"></script>
@@ -43,9 +44,9 @@
 </div>
 	<div id="contentLogin">
             <form>
-                <label style="font-weight:bold;">Username:</label>
+                <label style="font-weight:bold;margin-left:10px;margin-top:10px">Username:</label>
                 <div class="formTexts" style="margin:10px"><input type="text" name="name" id="username" data-mini="true" placeholder="Username"/></div><br/>
-                <label style="font-weight:bold;">Password:&nbsp;</label>
+                <label style="font-weight:bold;margin-left:10px">Password:&nbsp;</label>
                 <div class="formTexts" style="margin:10px"><input type="password" size="20" name="password" id="password" data-mini="true" placeholder="Password" /></div><br/>
     <a href="#" class="buttons" id="loginButton" data-role="button" style="margin:10px">
         Sign In
@@ -81,33 +82,28 @@
 
 <!-- Courses List Page Start -->
 	<div data-role="page" id="home">
-				
-				<!-- Sidebar Panel Code -->
-			<div data-role="panel" id="sidebarPanel" data-position="left" data-display="push">
+			
 			<div data-role="header">
-			<h4>My Profile</h4>
-			<ul data-role="listview" data-inset="true" data-theme="c" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-			    <li data-icon="custom" id="skull" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Update Profile</a></div><span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span></div></li>
-			    <li data-icon="delete" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Un-Enroll Course</a></div><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></div></li>
-			    <li data-icon="gear" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Settings</a></div><span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span></div></li>
-			    <li data-icon="info" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Logout</a></div><span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>
-			 </ul>
-			</div>
-			</div>
-		<!--  Sidebar Code end -->
+		    <h2><span id="sidebar"><i class="fa fa-bars fa-lg" style="float:left"></i></span>Courses <span id="logout"><i class="fa fa-sign-out fa-lg"></i></span></h2>
+		  </div>
 		
+		
+		 <ul id="coursesList" data-role="listview" data-filter="true" data-filter-placeholder="Search Courses..." data-inset="true">
+		 
+		</ul>
+		<div data-role="panel" id="sidebarPanel" data-position="left" data-display="overlay">
 		<div data-role="header">
-			<a href="#sidebarPanel" data-role="button" data-icon="grid"></a><h1>Course List</h1>
+		<h4>My Profile</h4>
+		<ul data-role="listview" data-inset="true" data-theme="c" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+		                    <li id="sidebaraccsettings" data-icon="custom" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Account Settings</a></div><span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span></div></li>
+		                    <li id="sidebarcourses" data-icon="custom" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">My Courses</a></div><span class="ui-icon ui-icon-custom ui-icon-shadow">&nbsp;</span></div></li>
+		                    <li id="sidebarsettings" data-icon="gear" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Settings</a></div><span class="ui-icon ui-icon-gear ui-icon-shadow">&nbsp;</span></div></li>
+		                    <li id="sidebarlogout" data-icon="info" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#" class="ui-link-inherit">Logout</a></div><span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>
+		 </ul>
+		</div>
+		</div>
 		</div>
 		
-		<div data-role="content">
-			<ul id="coursesList" data-role="listview" data-filter="true"
-				data-filter-placeholder="Search Courses..." data-inset="true">
-			</ul>			
-		</div>
-		
-
-		<div data-role="footer"></div>
 		<script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
@@ -646,8 +642,64 @@
 		
 	</div>
 	<!-- End Page 6 Discussion Forum -->
+
+<!-- Start Page 7 Settings Page -->
+	<div data-role="page" id="settings">
+		<div data-role="header">
+			<h2>
+				<span id="s_backbutton"><i
+					class="fa fa-arrow-circle-left fa-lg"></i></span>Settings
+			</h2>
+		</div>
+		<div id="contentSettings">
+			<section>
+				<span class="tooltip"></span>
+				<div class="textVol">Volume:</div>
+				<div id="slider"></div>
+				<span class="volume"></span>
+			</section>
+			<section id="switchSection">
+				<fieldset>
+					<div data-role="fieldcontain">
+						<label for="checkbox-based-flipswitch">Notifications:</label>
+						<div class="checkboxDiv">
+							<input id="switchBox" type="checkbox"
+								id="checkbox-based-flipswitch" data-role="flipswitch">
+						</div>
+					</div>
+				</fieldset>
+			</section>
+		</div>
+	</div>
+	<!-- End Page 7 Settings Page -->
 	
-	
+	<!-- Start Page 8 Account Settings Page -->
+	<div data-role="page" id="accountSettings">
+		<div data-role="header">
+			<h2>
+				<span id="as_backbutton"><i
+					class="fa fa-arrow-circle-left fa-lg"></i></span>Update
+			</h2>
+		</div>
+		<div id="contentRegister">
+			<form>
+				<label>Username:</label>
+				<div class="formTexts">
+					<input type="text" name="name" id="as_username" data-userid=""
+						data-mini="true" placeholder="Username" />
+				</div>
+				<br /> <label>Password:</label>
+				<div class="formTexts">
+					<input type="password" name="password" id="as_password"
+						data-mini="true" placeholder="Password" />
+				</div>
+				<br />
+				<div class="buttons" id="updateButton">Update</div>
+		</div>
+	</div>
+<!-- End Page 8 Account Settings Page -->
+
+
 	<!--  Common Scripts  -->
 	 <script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
@@ -720,7 +772,137 @@
 		
 		}
 	
-	</script>
+	
+	
+			// Script for Slider
+			$(function() {
+				var slider = $('#slider'), tooltip = $('.tooltip');
+				tooltip.hide();
+				slider
+						.slider({
+							range : "min",
+							min : 1,
+							value : 35,
+
+							start : function(event, ui) {
+								tooltip.fadeIn('fast');
+							},
+
+							slide : function(event, ui) {
+
+								var value = slider.slider('value'), volume = $('.volume');
+
+								tooltip.css('left', value).text(ui.value);
+
+								if (value <= 5) {
+									volume.css('background-position', '0 0');
+								} else if (value <= 25) {
+									volume
+											.css('background-position',
+													'0 -25px');
+								} else if (value <= 75) {
+									volume
+											.css('background-position',
+													'0 -50px');
+								} else {
+									volume
+											.css('background-position',
+													'0 -75px');
+								}
+								;
+							},
+							stop : function(event, ui) {
+								tooltip.fadeOut('fast');
+							},
+						});
+			});
+			
+			
+	//update button PUT method
+    $("#updateButton").click(function(){
+    	
+    		var uid = $("#as_username").attr("data-userid");
+    		var uname = $("#as_username").val();
+    		var pwd = $("#as_password").val();
+    		var putUrl = "http://mobile-mooc.herokuapp.com/api/users/"+uid.toString();
+    		$.ajax({
+				  url: putUrl,
+				  type: "PUT",
+  				  data: { "username": uname, "password": pwd},
+  				  dataType: "json"
+				})
+				.done(function(data) {
+				  console.log(data);
+				  $("#as_username").val('');
+				  $("#as_password").val('');
+				  if ($('#errorDiv').length){
+				        $('#errorDiv').remove();
+				    }
+				  $.mobile.navigate("#courses",{});
+				})
+				.fail(function(data) {
+    				var errorDivHtml = "<div id='errorDiv' style='text-align:center;color:red;width:180px;height:20px;border:1px solid red;border-radius:5px;margin-left:80px;margin-top:5px'>Sorry!Please Try Again!</div>"
+    				if ($('#errorDiv').length>0){
+				    	$('#errorDiv').remove();
+				    	$("#updateButton").after(errorDivHtml);    
+				    }
+				    else{
+				    	$("#updateButton").after(errorDivHtml);
+				    }
+				    $("#as_username").val('');
+				  $("#as_password").val('');
+  				});
+    		
+    		});
+    		//update button functionality ends
+			
+			//Sidebar Navigation
+			 			$("#sidebar").click(function(){
+    						$( "#sidebarPanel" ).panel("open");
+    			});
+    			$("#logout").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#sidebarlogout").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#backbutton").click(function(){
+    						$.mobile.navigate("#login",{});
+    			});
+    			$("#s_backbutton").click(function(){
+    						$.mobile.navigate("#home",{});
+    			});
+    			$("#as_backbutton").click(function(){
+    						$.mobile.navigate("#home",{});
+    			});
+    			$("#sidebarsettings").click(function(){
+    						$.mobile.navigate("#settings",{});
+    			});
+    			$("#sidebaraccsettings").click(function(){
+    						//populate username and password by getting
+    							$.ajax({
+								  url: "http://mobile-mooc.herokuapp.com/api/users/"+$("#as_username").attr("data-userid"),
+								  type: "GET",
+								  dataType: "json"
+								}).done(function(data) {
+										console.log('here');
+								  		$("#as_username").val(data["username"]);
+				 					    $("#as_password").val(data["password"]);
+								})
+								.fail(function(data) {
+				    					console.log(data);
+				  				}); 
+    						//code ends
+    						$.mobile.navigate("#accountSettings",{});
+    			});
+    			$("#sidebarcourses").click(function(){
+    						$( "#sidebarPanel" ).panel("close");
+    						$.mobile.navigate("#courses",{});
+    			});
+			
+			
+			
+		</script>
 		
 </body>
 </html>
