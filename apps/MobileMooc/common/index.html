@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
 <script src="js/jquery-1.11.0.js"></script>
 <script src="js/jquery.mobile-1.4.2.js"></script>
+<script src="js/parse-1.2.18.js"></script>
 
 <style>
 .wrap {
@@ -218,16 +219,17 @@
 					<li id="videoPage"><a href="#coursevideos" id="viewlectures">View Lectures</a></li>
 					<li id="notespage"><a href="#lecturenotes" id="viewlectures">Read Lecture Notes</a></li>
 					<li id="notespage"><a href="#social" id="">Share this Course</a></li>
+					<li id="notespage"><a href="#discussion" id="" onclick='loadPosts()'>Discussion Forum</a></li>
 				</ul>
 			
 
 
 			<div data-role="navbar" id="navbar">
 				<ul>
-					<li><a href="#home" id="home">Home</a></li>
-					<li><a href="#" id="Drop">Drop</a></li>
-					<li><a href="#" id="Add"
-						onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a></li>
+					<li><a href="#home" data-icon="home" id="home">Home</a></li>
+					<li><a href="#" id="Drop" data-icon="minus">Drop</a></li>
+					<li><a href="#" id="Add" data-icon="plus"
+						>Add </a></li>
 				</ul>
 			</div>
 
@@ -255,7 +257,7 @@
 						alert('error');
 					}
 				});
-		
+				globalCourseID= courseID;
 		}
 		
 		function populateCourseData(courseData){
@@ -327,6 +329,8 @@
 
 	</div>
 	<!--End of page 2  -->
+	
+	<!-- Start Page 3 Course Videos  -->
 	<div data-role="page" id="coursevideos">
 		<div data-role="header" id="header" data-position="fixed">
 			<h3>Course Lectures</h3>
@@ -355,14 +359,12 @@
 		</div>
 
 
-		<div data-role="navbar" id="navbar">
-			<ul>
-				<li><a href="#home" id="home">Home</a></li>
-				<li><a href="#" id="Drop">Drop</a></li>
-				<li><a href="#" id="Add"
-					onclick="getCourseDetails('5358b52375be840200ed5c76')">Add </a></li>
-			</ul>
-		</div>
+			<div data-role="navbar" id="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" id="home">Home</a></li>
+					<li><a href="#courseDetails" id="Drop" data-icon="back">Back to Course</a></li>
+				</ul>
+			</div>
 		
 		<script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
@@ -401,14 +403,12 @@
 		</div>
 
 
-		<div data-role="navbar" id="navbar">
-			<ul>
-				<li><a href="#home" id="home">Home</a></li>
-				<li><a href="#" id="Drop">Drop</a></li>
-				<li><a href="#" id="Add"
-					onclick="">Add </a></li>
-			</ul>
-		</div>
+			<div data-role="navbar" id="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" id="home">Home</a></li>
+					<li><a href="#courseDetails" id="Drop" data-icon="back">Back to Course</a></li>
+				</ul>
+			</div>
 		
 		<script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
@@ -521,14 +521,12 @@
 			</div>
 	</div>
 
-		<div data-role="navbar" id="navbar">
-			<ul>
-				<li><a href="#home" id="home">Home</a></li>
-				<li><a href="#" id="Drop">Drop</a></li>
-				<li><a href="#" id="Add"
-					onclick="">Add </a></li>
-			</ul>
-		</div>
+			<div data-role="navbar" id="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" id="home">Home</a></li>
+					<li><a href="#courseDetails" id="Drop" data-icon="back">Back to Course</a></li>
+				</ul>
+			</div>
 		
 		<script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
@@ -555,11 +553,109 @@
 	<!--End of Page 5 Social features  -->
 	
 	
+	<!-- Page 6 Discussion Forum Start -->
+	<div data-role="page" id="discussion">
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Discussion Forum</h3>
+		</div>
+
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" id="discusslist" data-inset="true">
+				<li data-role="list-divider" id="divider">Posts</li>
+				
+			</ul>
+			<textarea id="messagepost"></textarea>
+			<a href="#" data-role="button" onclick='submitPost()' id="submitDiscuss">Post Message</a>
+
+		</div>
+
+
+			<div data-role="navbar" id="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" id="home">Home</a></li>
+					<li><a href="#courseDetails" id="Drop" data-icon="back">Back to Course</a></li>
+				</ul>
+			</div>
+		
+		<script src="js/initOptions.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/messages.js"></script>
+		<script>
+		
+		function loadPosts(){
+	
+		Parse.initialize("OjSr4QuLg9QWtXlptg8CmgO62124xELAake7r3Jq",
+						"FsbUYjZijkyojKTYrIAB2aRlZy61T412NSljoRGD");
+	
+			var Forum = Parse.Object.extend("Forum");
+				var query = new Parse.Query(Forum);
+				query.equalTo("courseid", globalCourseID);
+				query
+						.find({
+							success : function(results) {
+								//alert("Successfully retrieved "
+								//		+ results.length + " messages.");
+								// Do something with the returned Parse.Object values
+								for (var i = 0; i < results.length; i++) {
+									var object = results[i];
+							$("#discusslist").append('<li class="wrap">'+object.get('user')+' : '+object.get('message')+'</li>');
+    						$("#discusslist").listview('refresh');
+								//	alert(object.id + ' - '
+								//			+ object.get('message'));
+								}
+							},
+							error : function(error) {
+								alert("Error: " + error.code + " "
+										+ error.message);
+							}
+						});
+			}
+
+	
+			function submitPost() {
+
+				Parse.initialize("OjSr4QuLg9QWtXlptg8CmgO62124xELAake7r3Jq",
+						"FsbUYjZijkyojKTYrIAB2aRlZy61T412NSljoRGD");
+
+				var Forum = Parse.Object.extend("Forum");
+
+				// Create a new instance of that class.
+				var forum = new Forum();
+				forum.set("user", globalUser);
+				forum.set("message",
+						document.getElementById("messagepost").value);
+				forum.set("courseid", globalCourseID);
+
+				forum.save(null, {
+					success : function(forum) {
+						// Execute any logic that should take place after the object is saved.
+						//alert('New object created with objectId: ' + forum.id);
+						$("#discusslist").empty();
+						loadPosts();
+					},
+					error : function(forum, error) {
+						// Execute any logic that should take place if the save fails.
+						// error is a Parse.Error with an error code and description.
+						alert('Failed to create new object, with error code: '
+								+ error.description);
+					}
+				});
+			}
+		</script>
+		
+		
+	</div>
+	<!-- End Page 6 Discussion Forum -->
+	
+	
 	<!--  Common Scripts  -->
 	 <script src="js/initOptions.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/messages.js"></script>
 		<script>
+            
+            var globalCourseID;
+            var globalUser;
             
             $("#registerLink").click(function(){
                 $.mobile.navigate("#register",{});
@@ -584,6 +680,7 @@
             
             var uname = $("#username").val();
             var pwd = $("#password").val();
+            globalUser = uname;
             $.ajax({
                   url: "http://mobile-mooc.herokuapp.com/api/users/login",
                   type: "POST",
@@ -597,7 +694,8 @@
                   if ($('#errorDiv').length){
                         $('#errorDiv').remove();
                     }
-                                                          getCourses();
+                  getCourses();
+                  
                   $.mobile.navigate("#home",{});
 
                 })
